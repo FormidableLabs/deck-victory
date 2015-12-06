@@ -26,6 +26,7 @@
     "history": "1.13.1",
     "hjs-webpack": "2.8.1",
     "json-loader": "^0.5.2",
+    "lodash": "^3.9.3",
     "normalize.css": "^3.0.3",
     "postcss-loader": "^0.5.1",
     "radium": "0.14.x",

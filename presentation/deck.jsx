@@ -1,16 +1,24 @@
 /*eslint-disable no-multiple-empty-lines*/
 import React from "react";
 
-// victory components
-import {Victory} from "victory";
-
 // Slide abstractions
 // ------------------
 // Appear, BlockQuote, Cite, CodePane, Deck, Fill,
 // Heading, Image, Layout, Link, ListItem, List, Quote, Slide, Text
 import {
-  Deck, CodePane, Heading, Image, Link, Slide, Text, Layout, List, ListItem, Fill, Appear
+  Deck, CodePane, Heading, Image, Link, Slide, Text, Layout, List, ListItem, Fill, Fit, Appear
 } from "spectacle/src/spectacle";
+
+// victory components
+import {Victory} from "victory";
+
+// diagram components
+
+import CssDiagram from "./components/css-diagram";
+import JsDiagram from "./components/js-diagram";
+import TemplateDiagram from "./components/template-diagram";
+import BarChartDiagram from "./components/bar-chart-diagram";
+
 
 // Images
 // ------
@@ -177,6 +185,21 @@ export default class extends React.Component {
         {/* ---------------------------------------------------------------
           * Title
           * --------------------------------------------------------------- */}
+
+          <Slide>
+            <Heading caps size={5}>
+              everyone wants dashboards
+            </Heading>
+            <Layout>
+              <BarChartDiagram/>
+              <JsDiagram highlights={[5, 6]}/>
+              <TemplateDiagram highlights={[0, 1, 2]}/>
+              <CssDiagram highlights={[0, 1, 2, 3]}/>
+            </Layout>
+
+
+          </Slide>
+
         <Slide id="title" bgImage={images.polygons}>
           <Text bold fit caps textColor="primary" textFont="primary">
             VictoryJS
@@ -184,14 +207,6 @@ export default class extends React.Component {
           <Text bold fit caps textColor="primary" textFont="primary">
             Data Viz in React
           </Text>
-        </Slide>
-        <Slide id="architects" bgColor="tertiary" bgImage={images.polygonsGray}>
-          <Heading fit caps textColor="primary">
-            Architects
-          </Heading>
-          <Heading textColor="primary" style={{marginTop: "0.2em", fontSize: "3em"}}>
-            <i className="fa fa-github"></i>
-          </Heading>
         </Slide>
 
         <Slide id="intro">
@@ -212,6 +227,7 @@ export default class extends React.Component {
 
 
         <Slide>
+          <CssDiagram/>
           <Heading size={3}>
             <i className="fa fa-flash"></i> Seconds to Drop In
           </Heading>
