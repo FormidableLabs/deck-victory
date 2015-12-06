@@ -1,10 +1,17 @@
 /*global document*/
 
-import React from "react/addons";
+import React from "react";
+import ReactDOM from "react-dom";
 import context from "spectacle/src/utils/context";
 
 import {Router, Route} from "react-router";
-import HashHistory from "react-router/lib/HashHistory";
+
+import createBrowserHistory from "history/lib/createBrowserHistory";
+import createHashHistory from "history/lib/createHashHistory";
+
+const history = process.env.NODE_ENV === "production" ?
+  createHashHistory() :
+  createBrowserHistory();
 
 import Flux from "spectacle/src/flux/alt";
 import Deck from "./presentation/deck";
@@ -46,8 +53,8 @@ const PresContext = context(Presentation, {
 });
 
 // Router
-React.render(
-  <Router history={new HashHistory()}>
+ReactDOM.render(
+  <Router history={history}>
     <Route path="/" component={PresContext} />
     <Route path="/:slide" component={PresContext} />
   </Router>

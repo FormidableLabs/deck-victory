@@ -1,8 +1,8 @@
 /*eslint-disable no-multiple-empty-lines*/
-import React from "react/addons";
+import React from "react";
 
 // victory components
-import {VictoryPie} from "victory-pie";
+import {Victory} from "victory";
 
 // Slide abstractions
 // ------------------
@@ -184,6 +184,14 @@ export default class extends React.Component {
           <Text bold fit caps textColor="primary" textFont="primary">
             Data Viz in React
           </Text>
+        </Slide>
+        <Slide id="architects" bgColor="tertiary" bgImage={images.polygonsGray}>
+          <Heading fit caps textColor="primary">
+            Architects
+          </Heading>
+          <Heading textColor="primary" style={{marginTop: "0.2em", fontSize: "3em"}}>
+            <i className="fa fa-github"></i>
+          </Heading>
         </Slide>
 
         <Slide id="intro">
