@@ -5,7 +5,7 @@ import _ from "lodash";
 
 const containerStyle = {
   background: "#ebe3db",
-  border: "3px solid #ccc",
+  border: "3px solid #b5aca3",
   width: "175px",
   height: "225px",
   margin: "0 10 10 10"

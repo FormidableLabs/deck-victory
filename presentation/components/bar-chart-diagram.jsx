@@ -5,7 +5,7 @@ import {VictoryBar, VictoryAxis, VictoryChart} from "victory"
 
 const containerStyle = {
   background: "#ebe3db",
-  border: "3px solid #ccc",
+  border: "3px solid #b5aca3",
   width: "225px",
   height: "225px",
   margin: "0 10 10 10"

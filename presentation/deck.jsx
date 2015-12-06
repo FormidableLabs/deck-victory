@@ -14,6 +14,7 @@ import {Victory} from "victory";
 
 // diagram components
 
+import ContainerDiagram from "./components/container-diagram";
 import CssDiagram from "./components/css-diagram";
 import JsDiagram from "./components/js-diagram";
 import TemplateDiagram from "./components/template-diagram";
@@ -27,7 +28,8 @@ import preloader from "spectacle/src/utils/preloader";
 
 const images = {
   polygons: require("../assets/img/bg/formidable/formidangles-dark.svg"),
-  polygonsGray: require("../assets/img/bg/formidable/formidangles-gray.svg")
+  polygonsGray: require("../assets/img/bg/formidable/formidangles-gray.svg"),
+  formidableLogo: require("../assets/img/logo/formidable-black.svg")
 };
 
 // Preload all images
@@ -129,14 +131,6 @@ BlackBox.propTypes = {
   tag: React.PropTypes.string
 };
 
-// Links
-// -----
-const links = {
-  /*eslint-disable max-len*/
-
-  /*eslint-enable max-len*/
-};
-
 
 // Helpers
 // -------
@@ -187,6 +181,182 @@ export default class extends React.Component {
           * Title
           * --------------------------------------------------------------- */}
 
+          <Slide id="title"
+            notes={
+            "I want to tell you about data vix components for react, but first a little background..."}>
+            <Text bold fit textFont="primary">
+              Victory
+            </Text>
+            <Text bold fit textFont="primary">
+              data visualization for React
+            </Text>
+          </Slide>
+
+          <Slide id="formidable"
+            notes={notes(
+            "I work at a JS consultancy called Formidable",
+            "were located in Fremont",
+            "I've been working for formidable for about 2 years",
+            "my colleagues and I have worked on projects for a bunch of different clients",
+            "I started to notice some trends")}>
+            <Image width="100%" src={images.formidableLogo}/>
+          </Slide>
+
+        {/* ---------------------------------------------------------------
+          * Background
+          * --------------------------------------------------------------- */}
+          <Slide id="dashboards-0" transition={"fade"}
+            notes={notes(
+            "So, this isn't very surprising",
+            "we have access to more data more easliy than ever before",
+            "and this data becomes very valuable when we can extract useful information from it",
+            "and start to make decisions based on it",
+            "humans are excellent visual pattern matchers",
+            "representing data visually is a very effective way to extract that information",
+            "There are entire companies built around this idea",
+            "I walked past tableau on my way here tonight, in fact",
+            "solutions to this problem already exist, but we're a consultancy... so",
+            "when our clients say 'we want dashboards', we know they really mean"
+          )}>
+
+            <Text bold fit caps textFont="primary">
+              Everyone wants
+            </Text>
+            <Text bold fit caps textFont="primary">
+              Dashboards
+            </Text>
+          </Slide>
+
+          <Slide id="dashboards-1" transition={"fade"} notes={notes(
+            "So we figured out how to build custom dashboards",
+            "and at first it went something like this..."
+          )}>
+            <Text bold fit caps textFont="primary">
+              Everyone wants
+            </Text>
+            <Text bold fit caps textFont="primary">
+              custom
+            </Text>
+            <Text bold fit caps textFont="primary">
+              Dashboards
+            </Text>
+          </Slide>
+
+          <Slide id="diagram-0" notes={notes(
+            "The client would give us a spec, and we'd start setting up a project",
+            "We'd write some JS, and some flavor of html template, and some css",
+            "look at that beautiful separation of conerns",
+            "and then everything would be in place to add some actual data viz",
+            "and we're a JS consultancy, so choosing a data viz library was pretty easy"
+          )}>
+            <BarChartDiagram label={"spec"}/>
+            <Layout>
+              <Fill>
+                <Layout>
+                    <Appear fid={1}><JsDiagram/></Appear>
+                    <Appear fid={1}><TemplateDiagram/></Appear>
+                    <Appear fid={1}><CssDiagram/></Appear>
+                    <Appear fid={1}>
+                      <Heading size={3} textColor="sand">
+                        <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                      </Heading>
+                    </Appear>
+                  <Appear fid={1}><ContainerDiagram label={"result"}/></Appear>
+                </Layout>
+              </Fill>
+            </Layout>
+          </Slide>
+
+          <Slide id="d3-0" transition={"fade"} notes={notes(
+            "of course we picked d3",
+            "how many of you have used d3? pretty much everyone?"
+          )}>
+            <Text bold fit textFont="primary">
+              enter d3
+            </Text>
+          </Slide>
+
+          <Slide id="d3-1" transition={"fade"} notes={notes(
+            "so you know it has its share of oddities",
+            "but once you get past the learning curve, it's really very useful"
+          )}>
+            <Text bold fit textFont="primary">
+              .enter( ) d3
+            </Text>
+          </Slide>
+
+          <Slide id="diagram-d3-0" notes={notes(
+            "so we'd write a bunch of d3, and a bunch more css",
+            "to do this really well it takes quite a bit of design effort in addition to code",
+            "maybe you're equipped to take it all on yourself",
+            "but if you're like me, you'll probably drink a whole lot of coffee",
+            "and pester the designers in your life",
+            "and eventaully end up with a nice looking chart"
+          )}>
+            <BarChartDiagram label={"spec"}/>
+            <Layout>
+              <Fill>
+                <Layout>
+                    <JsDiagram highlights={[4, 5, 6, 7]}/>
+                    <TemplateDiagram highlights={[2]}/>
+                    <CssDiagram highlights={[6, 7]}/>
+                      <Appear fid={1}>
+                        <Heading size={3} textColor="sand">
+                          <i className="fa fa-coffee" style={{paddingTop: 45}}/>
+                          <i className="fa fa-coffee" style={{paddingTop: 0}}/>
+                          <i className="fa fa-coffee" style={{paddingTop: 0}}/>
+                        </Heading>
+                      </Appear>
+                      <Appear fid={1}>
+                        <Heading size={3} textColor="sand">
+                          <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                        </Heading>
+                      </Appear>
+                    <Appear fid={1}><BarChartDiagram label={"result"}/></Appear>
+                </Layout>
+              </Fill>
+            </Layout>
+          </Slide>
+
+          <Slide id="diagram-d3-1" notes={notes(
+            "and then of course the spec would change"
+          )}>
+            <Layout>
+              <Fill>
+                <BarChartDiagram label={"spec #1"}/>
+                <LineChartDiagram label={"spec #2"}/>
+              </Fill>
+            </Layout>
+          </Slide>
+
+          <Slide id="diagram-d3-2" notes={notes(
+            "It's a lot easier this time around, you can reuse a lot of the patterns",
+            
+          )}>
+            <Layout>
+              <Fit>
+                <Layout>
+                    <JsDiagram/>
+                    <TemplateDiagram/>
+                    <CssDiagram/>
+                    <Heading size={3} textColor="sand">
+                      <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                    </Heading>
+                    <BarChartDiagram label={"result #1"}/>
+                </Layout>
+                <Layout>
+                  <Appear fid={1}><JsDiagram/></Appear>
+                  <Appear fid={1}><TemplateDiagram/></Appear>
+                  <Appear fid={1}><CssDiagram /></Appear>
+                  <Heading size={3} textColor="sand">
+                    <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                  </Heading>
+                  <LineChartDiagram label={"result #2"}/>
+                </Layout>
+              </Fit>
+            </Layout>
+          </Slide>
+
           <Slide>
             <Layout>
               <Fit>
@@ -206,14 +376,7 @@ export default class extends React.Component {
             </Layout>
           </Slide>
 
-        <Slide id="title" bgImage={images.polygons}>
-          <Text bold fit caps textColor="primary" textFont="primary">
-            VictoryJS
-          </Text>
-          <Text bold fit caps textColor="primary" textFont="primary">
-            Data Viz in React
-          </Text>
-        </Slide>
+
 
         <Slide id="intro">
           <LonelyHeading size={4}>
@@ -233,7 +396,6 @@ export default class extends React.Component {
 
 
         <Slide>
-          <CssDiagram/>
           <Heading size={3}>
             <i className="fa fa-flash"></i> Seconds to Drop In
           </Heading>
