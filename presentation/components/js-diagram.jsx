@@ -6,16 +6,16 @@ import _ from "lodash";
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #ccc",
-  width: "11em",
-  height: "13em",
-  margin: "0.1em 1em 1em 1em"
+  width: "175px",
+  height: "225px",
+  margin: "0 10 10 10"
 };
 
 const rectStyle = {
   stroke: "transparent",
   fill: "#b5aca3",
-  height: "0.75em",
-  width: "6em"
+  height: "12px",
+  width: "85px"
 };
 
 const labelStyle = {

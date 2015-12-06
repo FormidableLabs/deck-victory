@@ -1,23 +1,31 @@
 import React from "react";
 import Radium from "radium";
 import _ from "lodash";
+import {VictoryLine, VictoryAxis, VictoryChart} from "victory"
 
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #ccc",
-  width: "13em",
-  height: "13em",
-  margin: "0.1em 1em 1em 1em"
-};
-
-const lineStyle = {
-  stroke: "transparent",
-  stroke: "#b5aca3",
+  width: "225px",
+  height: "225px",
+  margin: "0 10 10 10"
 };
 
 const axisStyle = {
-  stroke: "#91887e",
-  strokeWidth: "0.3"
+  axis: {
+    stroke: "#91887e",
+    strokeWidth: 6,
+    strokeLinecap: "square"
+  },
+  ticks: {stroke: "transparent"},
+  tickLabels: {fill: "none"}
+};
+
+const lineStyle = {
+  data: {
+    stroke: "#b5aca3",
+    strokeWidth: 3
+  }
 };
 
 const labelStyle = {
@@ -28,7 +36,7 @@ const labelStyle = {
 @Radium
 export default class LineChartDiagram extends React.Component {
   static propTypes = {
-    highlightLine: React.PropTypes.bool,
+    highlightBars: React.PropTypes.bool,
     highlightAxes: React.PropTypes.bool,
     highlightColor: React.PropTypes.string,
     label: React.PropTypes.string
@@ -36,48 +44,46 @@ export default class LineChartDiagram extends React.Component {
 
   static defaultProps = {
     highlightColor: "#bd4139",
-    highlightLine: false,
+    highlightLines: false,
     highlightAxes: false,
     label: "chart"
   };
 
-  getLinePath(x0, y0) {
-    return `M ${x0}, ${y0}
-      L ${x0}, ${y0}
-      L ${x0}, ${y0}
-      L ${x0}, ${y0}
-      L ${x0}, ${y0}`;
+  getAxisStyle() {
+    return this.props.highlightAxes ?
+      _.merge({}, axisStyle, {axis: {stroke: this.props.highlightColor}}) :
+      axisStyle;
   }
 
-  renderLine() {
-    const overrides = {
-      stroke: this.props.highlightLine ? this.props.highlightColor : undefined,
-    };
-    return (
-      <path
-        key={index}
-        d={this.getLinePath(1.5, 11)}
-        style={_.merge({}, LineStyle, overrides)}
-      />
-    );
+  getLineStyle() {
+    return this.props.highlightLines ?
+      _.merge({}, LineStyle, {data: {stroke: this.props.highlightColor}}) :
+      lineStyle;
   }
 
-  renderAxes() {
-    return (
-      <g>
-        <line key={"x"} style={axisStyle} x1={"1.5"} y1={"11"} x2={"11.5"} y2={"11"}/>
-        <line key={"y"} style={axisStyle} x1={"1.65"} y1={"11"} x2={"1.65"} y2={"1.5"}/>
-      </g>
-    )
+  getLineData() {
+    return [
+      {x: 0, y: 0},
+      {x: 1, y: 2},
+      {x: 2, y: 1},
+      {x: 3, y: 4},
+      {x: 4, y: 3},
+      {x: 5, y: 5}
+    ];
   }
 
   render() {
     return (
       <div>
         <h1 style={labelStyle}>{this.props.label}</h1>
-        <svg style={containerStyle} viewBox="0 0 13 13">
-          {this.renderLine()}
-          {this.renderAxes()}
+        <svg style={containerStyle}>
+          <VictoryChart width={225} height={225} padding={35}
+            standalone={false} domain={{x: [0, 5.8], y: [0, 5]}}
+          >
+            <VictoryLine style={this.getLineStyle()} data={this.getLineData()}/>
+            <VictoryAxis style={this.getAxisStyle()}/>
+            <VictoryAxis dependentAxis style={this.getAxisStyle()}/>
+          </VictoryChart>
         </svg>
       </div>
     );

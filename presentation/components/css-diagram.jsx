@@ -6,16 +6,16 @@ import _ from "lodash";
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #ccc",
-  width: "11em",
-  height: "13em",
-  margin: "0.1em 1em 1em 1em"
+  width: "175px",
+  height: "225px",
+  margin: "0 10 10 10"
 };
 
 const rectStyle = {
   stroke: "transparent",
   fill: "#b5aca3",
-  height: "0.75em",
-  width: "4em"
+  height: "12px",
+  width: "75px"
 };
 
 const labelStyle = {
@@ -39,13 +39,12 @@ export default class CssDiagram extends React.Component {
   renderRects() {
     let style;
     let indent;
-    const rectArray = _.range(9);
+    const rectArray = _.range(10);
     return _.map(rectArray, (index) => {
       style = _.contains(this.props.highlights, index) ?
         _.merge({}, rectStyle, {fill: this.props.highlightColor}) : rectStyle;
-      // indent = (index % 4 === 0) ? "2em" : "3em";
       return (
-        <rect key={index} style={style} y={`${1.25 * index + 1}em`} x={`${index % 4 + 1}em`}/>
+        <rect key={index} style={style} y={20 * index + 15} x={index % 4 * 15 + 30}/>
       );
     });
   }

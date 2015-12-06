@@ -6,16 +6,16 @@ import _ from "lodash";
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #ccc",
-  width: "11em",
-  height: "13em",
-  margin: "0.1em 1em 1em 1em"
+  width: "175px",
+  height: "225px",
+  margin: "0 10 10 10"
 };
 
 const rectStyle = {
   stroke: "transparent",
   fill: "#b5aca3",
-  height: "0.75em",
-  width: "6em"
+  height: "12px",
+  width: "85px"
 };
 
 const labelStyle = {
@@ -40,13 +40,17 @@ export default class TemplateDiagram extends React.Component {
   renderRects() {
     let style;
     let indent;
-    const rectArray = _.range(3);
+    const rectArray = _.range(5);
+    const nesting = rectArray.length / 2;
     return _.map(rectArray, (index) => {
       style = _.contains(this.props.highlights, index) ?
         _.merge({}, rectStyle, {fill: this.props.highlightColor}) : rectStyle;
-      indent = (index % 2 === 0) ? "2em" : "3em";
+      // indent = ((index + 1) % 3 === 0 || (index + 1) % 3 === 1) ? 30 : 45;
+      indent = (index < nesting) ?
+        index * 15 + 30 :
+        (rectArray.length - index) * 15 + 15;
       return (
-        <rect key={index} style={style} y={`${1.25 * index + 1}em`} x={indent}/>
+        <rect key={index} style={style} y={20 * index + 15} x={indent}/>
       );
     });
   }

@@ -18,6 +18,7 @@ import CssDiagram from "./components/css-diagram";
 import JsDiagram from "./components/js-diagram";
 import TemplateDiagram from "./components/template-diagram";
 import BarChartDiagram from "./components/bar-chart-diagram";
+import LineChartDiagram from "./components/line-chart-diagram";
 
 
 // Images
@@ -187,17 +188,22 @@ export default class extends React.Component {
           * --------------------------------------------------------------- */}
 
           <Slide>
-            <Heading caps size={5}>
-              everyone wants dashboards
-            </Heading>
             <Layout>
-              <BarChartDiagram/>
-              <JsDiagram highlights={[5, 6]}/>
-              <TemplateDiagram highlights={[0, 1, 2]}/>
-              <CssDiagram highlights={[0, 1, 2, 3]}/>
+              <Fit>
+                <Layout>
+                  <JsDiagram highlights={[5, 6]}/>
+                  <TemplateDiagram highlights={[0, 1, 2]}/>
+                  <CssDiagram highlights={[0, 1, 2, 3]}/>
+                  <BarChartDiagram/>
+                </Layout>
+                <Layout>
+                  <JsDiagram highlights={[5, 6]}/>
+                  <TemplateDiagram highlights={[0, 1, 2]}/>
+                  <CssDiagram highlights={[0, 1, 2, 3]}/>
+                  <LineChartDiagram/>
+                </Layout>
+              </Fit>
             </Layout>
-
-
           </Slide>
 
         <Slide id="title" bgImage={images.polygons}>
