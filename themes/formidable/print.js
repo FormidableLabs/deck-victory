@@ -19,9 +19,9 @@ const colors = {
 };
 
 const fonts = {
-  primary: "'Poppins', 'Futura', 'Century Gothic', 'Trebuchet MS', Helvetica, sans-serif",
-  secondary: "'Open Sans', 'Helvetica Neue', Helvetica, sans-serif",
-  tertiary: "'Anonymous Pro', Inconsolata, monospace"
+  secondary: "'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+  primary: "'Didot', 'Bodoni MT', 'Cochin', 'Baskerville', 'Goudy Old Style', 'Bitstream Charter', serif",
+  tertiary: "'Source Code Pro', 'Inconsolata', 'Courier New', 'Courier', monospace"
 };
 
 print.colors = colors;
