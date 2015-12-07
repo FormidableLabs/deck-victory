@@ -13,12 +13,16 @@ html, body {
 .Interactive {
   min-height: 333px;
   text-align: left;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .Interactive .playground {
   display: flex;
   flex-wrap: wrap;
   margin-bottom: 24px;
+  width: 100%;
 }
 
 .Interactive .playgroundCode:before, .Interactive .playgroundPreview:before {
@@ -79,7 +83,7 @@ html, body {
 
   .Interactive .playgroundCode {
     display: flex;
-    flex: 0 0 13em;
+    flex: 1;
     margin-right: 0.5em;
     margin-bottom: 0;
   }
