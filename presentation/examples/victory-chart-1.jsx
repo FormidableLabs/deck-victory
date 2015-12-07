@@ -1,0 +1,3 @@
+<VictoryChart>
+  <VictoryBar/>
+</VictoryChart>

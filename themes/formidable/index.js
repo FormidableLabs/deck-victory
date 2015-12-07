@@ -1,8 +1,8 @@
 import theme from "spectacle/themes/default/index";
 
 const colors = {
-  primary: "#FFFFFF",
-  secondary: "#232222",
+  primary: "#f6f2ee",
+  secondary: "#1b2633",
   tertiary: "#5e5c5c",
   // victory colors
   deepNavy: "#1b2633",

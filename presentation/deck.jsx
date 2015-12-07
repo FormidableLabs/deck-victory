@@ -1,6 +1,6 @@
 /*eslint-disable no-multiple-empty-lines*/
 import React from "react";
-
+import Playground from "component-playground";
 // Slide abstractions
 // ------------------
 // Appear, BlockQuote, Cite, CodePane, Deck, Fill,
@@ -10,17 +10,25 @@ import {
 } from "spectacle/src/spectacle";
 
 // victory components
-import {Victory} from "victory";
+import * as V from "victory";
+import {
+  VictoryChart, VictoryBar, VictoryAxis, VictortLine, VictoryScatter, VictoryPie
+} from "victory"
 
 // diagram components
 
+import Nope from "./components/nope";
 import ContainerDiagram from "./components/container-diagram";
 import CssDiagram from "./components/css-diagram";
 import JsDiagram from "./components/js-diagram";
 import TemplateDiagram from "./components/template-diagram";
 import BarChartDiagram from "./components/bar-chart-diagram";
 import LineChartDiagram from "./components/line-chart-diagram";
-
+import PlaygroundWrapper from "./components/playground-wrapper";
+//examples
+const examples = {
+  chart1: require("!raw!!./examples/victory-chart-1")
+};
 
 // Images
 // ------
@@ -58,79 +66,6 @@ class CustomDeck extends Deck {
     }
   }
 }
-
-// Non-bolded heading.
-const getLonelyHeadingStyles = function () {
-  /*eslint-disable no-invalid-this*/
-  const styles = Heading.Mixin.getStyles.call(this);
-  styles.fontWeight = "normal";
-  return styles;
-};
-
-class LonelyHeading extends Heading {
-  constructor(props) {
-    super(props);
-    this.getStyles = getLonelyHeadingStyles;
-  }
-}
-
-LonelyHeading.defaultProps = {
-  size: 4
-};
-
-LonelyHeading.Mixin = {
-  getStyles: getLonelyHeadingStyles
-};
-
-// A meaningful "point" in text.
-class Point extends React.Component {
-  render() {
-    return (
-      <span style={{fontWeight: "bold"}}>
-        {this.props.children}
-      </span>
-    );
-  }
-}
-
-Point.propTypes = {
-  children: React.PropTypes.node
-};
-
-// Blackbox for white over images
-class BlackBox extends React.Component {
-  render() {
-    const Tag = this.props.tag;
-    const styles = Object.assign({
-      background: `rgba(${this.props.bgRgb.join(",")}, ${this.props.bgDarken})`,
-      borderRadius: "0.2em",
-      padding: "0.0em 0.2em",
-      margin: "0"
-    }, this.props.style);
-
-    return (
-      <Tag style={styles}>
-        {this.props.children}
-      </Tag>
-    );
-  }
-}
-
-BlackBox.defaultProps = {
-  tag: "span",
-  bgDarken: 0.75,
-  bgRgb: [0, 0, 0],
-  style: {}
-};
-
-BlackBox.propTypes = {
-  bgDarken: React.PropTypes.number,
-  bgRgb: React.PropTypes.array,
-  children: React.PropTypes.node,
-  style: React.PropTypes.object,
-  tag: React.PropTypes.string
-};
-
 
 // Helpers
 // -------
@@ -181,246 +116,491 @@ export default class extends React.Component {
           * Title
           * --------------------------------------------------------------- */}
 
-          <Slide id="title"
-            notes={
-            "I want to tell you about data vix components for react, but first a little background..."}>
-            <Text bold fit textFont="primary">
-              Victory
-            </Text>
-            <Text bold fit textFont="primary">
-              data visualization for React
-            </Text>
-          </Slide>
+        <Slide id="title"
+          notes={
+          "I want to tell you about data vix components for react, but first a little background..."}>
+          <Text fit textFont="serif" textColor="secondary">
+            Victory
+          </Text>
+          <Text fit textFont="serif" textColor="secondary">
+            data visualization for React
+          </Text>
+        </Slide>
 
-          <Slide id="formidable"
-            notes={notes(
-            "I work at a JS consultancy called Formidable",
-            "were located in Fremont",
-            "I've been working for formidable for about 2 years",
-            "my colleagues and I have worked on projects for a bunch of different clients",
-            "I started to notice some trends")}>
-            <Image width="100%" src={images.formidableLogo}/>
-          </Slide>
+        <Slide id="formidable"
+          notes={notes(
+          "I work at a JS consultancy called Formidable",
+          "were located in Fremont",
+          "I've been working for formidable for about 2 years",
+          "my colleagues and I have worked on projects for a bunch of different clients",
+          "I started to notice some trends")}>
+          <Image width="100%" src={images.formidableLogo}/>
+        </Slide>
 
         {/* ---------------------------------------------------------------
-          * Background
+          * Background: the standard approach
           * --------------------------------------------------------------- */}
-          <Slide id="dashboards-0" transition={"fade"}
-            notes={notes(
-            "So, this isn't very surprising",
-            "we have access to more data more easliy than ever before",
-            "and this data becomes very valuable when we can extract useful information from it",
-            "and start to make decisions based on it",
-            "humans are excellent visual pattern matchers",
-            "representing data visually is a very effective way to extract that information",
-            "There are entire companies built around this idea",
-            "I walked past tableau on my way here tonight, in fact",
-            "solutions to this problem already exist, but we're a consultancy... so",
-            "when our clients say 'we want dashboards', we know they really mean"
-          )}>
+        <Slide id="dashboards-0" transition={["fade"]}
+          notes={notes(
+          "So, this isn't very surprising",
+          "we have access to more data more easliy than ever before",
+          "and this data becomes very valuable when we can extract useful information from it",
+          "and start to make decisions based on it",
+          "humans are excellent visual pattern matchers",
+          "representing data visually is a very effective way to extract that information",
+          "There are entire companies built around this idea",
+          "I walked past tableau on my way here tonight, in fact",
+          "solutions to this problem already exist, but we're a consultancy... so",
+          "when our clients say 'we want dashboards', we know they really mean"
+        )}>
 
-            <Text bold fit caps textFont="primary">
-              Everyone wants
-            </Text>
-            <Text bold fit caps textFont="primary">
-              Dashboards
-            </Text>
-          </Slide>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            Everyone wants
+          </Text>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            Dashboards
+          </Text>
+        </Slide>
 
-          <Slide id="dashboards-1" transition={"fade"} notes={notes(
-            "So we figured out how to build custom dashboards",
-            "and at first it went something like this..."
-          )}>
-            <Text bold fit caps textFont="primary">
-              Everyone wants
-            </Text>
-            <Text bold fit caps textFont="primary">
-              custom
-            </Text>
-            <Text bold fit caps textFont="primary">
-              Dashboards
-            </Text>
-          </Slide>
+        <Slide id="dashboards-1" transition={["none"]} notes={notes(
+          "So we figured out how to build custom dashboards",
+          "and at first it went something like this..."
+        )}>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            Everyone wants
+          </Text>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            custom
+          </Text>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            Dashboards
+          </Text>
+        </Slide>
 
-          <Slide id="diagram-0" notes={notes(
-            "The client would give us a spec, and we'd start setting up a project",
-            "We'd write some JS, and some flavor of html template, and some css",
-            "look at that beautiful separation of conerns",
-            "and then everything would be in place to add some actual data viz",
-            "and we're a JS consultancy, so choosing a data viz library was pretty easy"
-          )}>
+        <Slide id="the-old-way-0" transition={["fade"]} notes={notes(
+          "So we figured out how to build custom dashboards",
+          "and at first it went something like this..."
+        )}>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            The standard
+          </Text>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            approach
+          </Text>
+        </Slide>
+
+        <Slide id="the-old-way-1" transition={["fade"]} notes={notes(
+          "The client would give us a spec, and we'd start setting up a project",
+          "We'd write some JS, and some flavor of html template, and some css",
+          "look at that beautiful separation of conerns",
+          "and then everything would be in place to add some actual data viz",
+          "and we're a JS consultancy, so choosing a data viz library was pretty easy"
+        )}>
+          <Layout>
+              <div style={{"flex-basis": "30%", paddingTop: 80, marginRight: 20}}>
+                <Text textFont="primary" textColor="secondary">
+                  the
+                </Text>
+                <Text bold fit textFont="primary" textColor="secondary">
+                  setup
+                </Text>
+              </div>
             <BarChartDiagram label={"spec"}/>
-            <Layout>
-              <Fill>
-                <Layout>
-                    <Appear fid={1}><JsDiagram/></Appear>
-                    <Appear fid={1}><TemplateDiagram/></Appear>
-                    <Appear fid={1}><CssDiagram/></Appear>
-                    <Appear fid={1}>
-                      <Heading size={3} textColor="sand">
+          </Layout>
+          <Layout>
+            <Fill>
+              <Layout>
+                <Appear fid="1"><JsDiagram/></Appear>
+                <Appear fid="2"><TemplateDiagram/></Appear>
+                <Appear fid="3"><CssDiagram/></Appear>
+                <Appear fid="4">
+                  <Heading size={3} textColor="secondary">
+                    <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                  </Heading>
+                </Appear>
+                <Appear fid="4"><ContainerDiagram label={"result"}/></Appear>
+              </Layout>
+            </Fill>
+          </Layout>
+        </Slide>
+
+        <Slide id="d3-0" notes={notes(
+          "of course we picked d3",
+          "how many of you have used d3? pretty much everyone?"
+        )}>
+          <Text bold fit textFont="primary" textColor="secondary">
+            enter d3
+          </Text>
+        </Slide>
+
+        <Slide id="d3-1" transition={["none"]} notes={notes(
+          "so you know it has its share of oddities",
+          "but once you get past the learning curve, it's really very useful"
+        )}>
+          <Text bold fit textFont="primary" textColor="secondary">
+            .enter( ) d3
+          </Text>
+        </Slide>
+
+        <Slide id="diagram-d3-0" notes={notes(
+          "so we'd write a bunch of d3, and a bunch more css",
+          "to do this really well it takes quite a bit of design effort in addition to code",
+          "maybe you're equipped to take it all on yourself",
+          "but if you're like me, you'll probably drink a whole lot of coffee",
+          "and pester the designers in your life",
+          "and eventaully end up with a nice looking chart"
+        )}>
+          <Layout>
+              <div style={{"flex-basis": "40%", paddingTop: 100, marginRight: 20}}>
+                <Text textFont="primary" textColor="secondary">
+                  creating a chart
+                </Text>
+                <Text bold fit textFont="primary" textColor="paleRed">
+                  with d3
+                </Text>
+              </div>
+            <BarChartDiagram label={"spec"}/>
+          </Layout>
+          <Layout>
+            <Fill>
+              <Layout>
+                  <JsDiagram highlights={[4, 5, 6, 7]}/>
+                  <TemplateDiagram highlights={[2]}/>
+                  <CssDiagram highlights={[6, 7]}/>
+                  <Heading size={3} textColor="secondary">
+                    <Appear fid="1"><i className="fa fa-coffee" style={{paddingTop: 45}}/></Appear>
+                    <Appear fid="2"><i className="fa fa-coffee" style={{paddingTop: 0}}/></Appear>
+                    <Appear fid="2"><i className="fa fa-coffee" style={{paddingTop: 0}}/></Appear>
+                  </Heading>
+                    <Appear fid="4">
+                      <Heading size={3} textColor="secondary">
                         <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
                       </Heading>
                     </Appear>
-                  <Appear fid={1}><ContainerDiagram label={"result"}/></Appear>
-                </Layout>
-              </Fill>
-            </Layout>
-          </Slide>
+                  <Appear fid="4"><BarChartDiagram label={"result"}/></Appear>
+              </Layout>
+            </Fill>
+          </Layout>
+        </Slide>
 
-          <Slide id="d3-0" transition={"fade"} notes={notes(
-            "of course we picked d3",
-            "how many of you have used d3? pretty much everyone?"
-          )}>
-            <Text bold fit textFont="primary">
-              enter d3
-            </Text>
-          </Slide>
+        <Slide id="diagram-d3-1" notes={notes(
+          "and then of course the spec would change"
+        )}>
+          <Layout>
+            <div style={{"flex-basis": "60%", paddingTop: 120, marginRight: 20}}>
+              <Text textFont="primary" textColor="secondary">
+                the spec
+              </Text>
+              <Text bold fit textFont="primary" textColor="secondary">
+                always
+              </Text>
+              <Text bold fit textFont="primary" textColor="secondary">
+                changes
+              </Text>
+            </div>
+            <Fill>
+              <BarChartDiagram label={"spec #1"}/>
+              <LineChartDiagram label={"spec #2"}/>
+            </Fill>
+          </Layout>
+        </Slide>
 
-          <Slide id="d3-1" transition={"fade"} notes={notes(
-            "so you know it has its share of oddities",
-            "but once you get past the learning curve, it's really very useful"
-          )}>
-            <Text bold fit textFont="primary">
-              .enter( ) d3
-            </Text>
-          </Slide>
-
-          <Slide id="diagram-d3-0" notes={notes(
-            "so we'd write a bunch of d3, and a bunch more css",
-            "to do this really well it takes quite a bit of design effort in addition to code",
-            "maybe you're equipped to take it all on yourself",
-            "but if you're like me, you'll probably drink a whole lot of coffee",
-            "and pester the designers in your life",
-            "and eventaully end up with a nice looking chart"
-          )}>
-            <BarChartDiagram label={"spec"}/>
-            <Layout>
-              <Fill>
-                <Layout>
-                    <JsDiagram highlights={[4, 5, 6, 7]}/>
-                    <TemplateDiagram highlights={[2]}/>
-                    <CssDiagram highlights={[6, 7]}/>
-                      <Appear fid={1}>
-                        <Heading size={3} textColor="sand">
-                          <i className="fa fa-coffee" style={{paddingTop: 45}}/>
-                          <i className="fa fa-coffee" style={{paddingTop: 0}}/>
-                          <i className="fa fa-coffee" style={{paddingTop: 0}}/>
-                        </Heading>
-                      </Appear>
-                      <Appear fid={1}>
-                        <Heading size={3} textColor="sand">
-                          <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
-                        </Heading>
-                      </Appear>
-                    <Appear fid={1}><BarChartDiagram label={"result"}/></Appear>
-                </Layout>
-              </Fill>
-            </Layout>
-          </Slide>
-
-          <Slide id="diagram-d3-1" notes={notes(
-            "and then of course the spec would change"
-          )}>
-            <Layout>
-              <Fill>
-                <BarChartDiagram label={"spec #1"}/>
-                <LineChartDiagram label={"spec #2"}/>
-              </Fill>
-            </Layout>
-          </Slide>
-
-          <Slide id="diagram-d3-2" notes={notes(
-            "It's a lot easier this time around, you can reuse a lot of the patterns",
-            
-          )}>
-            <Layout>
-              <Fit>
-                <Layout>
-                    <JsDiagram/>
-                    <TemplateDiagram/>
-                    <CssDiagram/>
-                    <Heading size={3} textColor="sand">
-                      <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
-                    </Heading>
-                    <BarChartDiagram label={"result #1"}/>
-                </Layout>
-                <Layout>
-                  <Appear fid={1}><JsDiagram/></Appear>
-                  <Appear fid={1}><TemplateDiagram/></Appear>
-                  <Appear fid={1}><CssDiagram /></Appear>
-                  <Heading size={3} textColor="sand">
+        <Slide id="diagram-d3-2" transition={["fade"]} notes={notes(
+          "so we end up writing a second view, since this chart is dealing with different data",
+          "we need to write more html too, so we have somewhere to append the second chart",
+          "and depending on how these charts are layed out, we might have to write a bunch more css"
+        )}>
+          <Layout>
+            <Fit>
+              <Layout>
+                  <JsDiagram/>
+                  <TemplateDiagram/>
+                  <CssDiagram/>
+                  <Heading size={3} textColor="secondary">
                     <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
                   </Heading>
-                  <LineChartDiagram label={"result #2"}/>
-                </Layout>
-              </Fit>
-            </Layout>
-          </Slide>
-
-          <Slide>
-            <Layout>
-              <Fit>
-                <Layout>
-                  <JsDiagram highlights={[5, 6]}/>
-                  <TemplateDiagram highlights={[0, 1, 2]}/>
-                  <CssDiagram highlights={[0, 1, 2, 3]}/>
-                  <BarChartDiagram/>
-                </Layout>
-                <Layout>
-                  <JsDiagram highlights={[5, 6]}/>
-                  <TemplateDiagram highlights={[0, 1, 2]}/>
-                  <CssDiagram highlights={[0, 1, 2, 3]}/>
-                  <LineChartDiagram/>
-                </Layout>
-              </Fit>
-            </Layout>
-          </Slide>
-
-
-
-        <Slide id="intro">
-          <LonelyHeading size={4}>
-            A <em>collection of composable react components</em> for building interactive data visualizations
-          </LonelyHeading>
+                  <BarChartDiagram label={"result #1"}/>
+              </Layout>
+              <Layout>
+                <Appear fid="1"><JsDiagram/></Appear>
+                <Appear fid="2"><TemplateDiagram/></Appear>
+                <Appear fid="3"><CssDiagram /></Appear>
+                <Heading size={3} textColor="secondary">
+                  <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                </Heading>
+                <LineChartDiagram label={"result #2"}/>
+              </Layout>
+            </Fit>
+          </Layout>
         </Slide>
-        <Slide transition={["fade"]}>
-          <Heading size={3}>
-            Motivations
+
+        <Slide id="diagram-d3-3" transition={["none"]} notes={notes(
+          "that's a lot of repetition. and a lot of context switching"
+        )}>
+          <Layout>
+            <Fit>
+              <Layout>
+                  <JsDiagram highlights={[1, 2]}/>
+                  <TemplateDiagram highlights={[2]}/>
+                  <CssDiagram highlights={[2, 3]}/>
+                  <Heading size={3} textColor="secondary">
+                    <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                  </Heading>
+                  <BarChartDiagram highlightAxes label={"result #1"}/>
+              </Layout>
+              <Layout>
+                <JsDiagram highlights={[5, 6]}/>
+                <TemplateDiagram highlights={[2]}/>
+                <CssDiagram highlights={[7, 6]}/>
+                <Heading size={3} textColor="secondary">
+                  <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                </Heading>
+                <LineChartDiagram highlightAxes label={"result #2"}/>
+              </Layout>
+            </Fit>
+          </Layout>
+        </Slide>
+
+        <Slide id="the-old-way-summary" transition={["fade"]} notes={notes(
+          "so overall the we've found the standard approach to be..."
+        )}>
+          <Heading fit size={3} textColor="secondary">
+            Developer Experience
           </Heading>
           <List>
-            <ListItem><Appear fid="1">We love data visualization</Appear></ListItem>
-            <ListItem><Appear fid="2">We love <em>React</em></Appear></ListItem>
-            <ListItem><Appear fid="3">We love great DevUX</Appear></ListItem>
+            <ListItem><Appear fid="1">Steep learning curve</Appear></ListItem>
+            <ListItem><Appear fid="2">Lots of context switching</Appear></ListItem>
+            <ListItem><Appear fid="3">Time consuming</Appear></ListItem>
+            <ListItem><Appear fid="4">Still kind of fun</Appear></ListItem>
           </List>
         </Slide>
 
-
-        <Slide>
-          <Heading size={3}>
-            <i className="fa fa-flash"></i> Seconds to Drop In
+        <Slide id="the-old-way-grade" transition={["fade"]} notes={notes(
+          "I'd give it a B-, not so bad, but definitely room for improvement"
+        )}>
+          <Heading fit size={3} textColor="secondary">
+            Developer Experience
           </Heading>
-          <CodePane
-            lang="javascript"
-            source={strip(`
-              $ npm install victory-pie
-            `)}
-            margin="20px auto"
-            style={{fontSize: "2em"}}/>
-          <CodePane
-            lang="javascript"
-            source={strip(`
-              import {VictoryPie} from "victory-pie";
-            `)}
-            margin="20px auto"
-            style={{fontSize: "2em"}}/>
-          <CodePane
-            lang="javascript"
-            source={strip(`
-              <VictoryPie/>
-            `)}
-            margin="20px auto"
-            style={{fontSize: "2em"}}/>
+          <Text style={{fontSize: 248}} textColor="paleRed">
+            B-
+          </Text>
         </Slide>
+
+        {/* ---------------------------------------------------------------
+          * Background: React and Radium
+          * --------------------------------------------------------------- */}
+
+        <Slide id="react-0" transition={["none"]} notes={notes(
+          "...and then about a year ago"
+        )}>
+          <Text textFont="primary" textColor="secondary">
+            then all of a sudden...
+          </Text>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            everyone
+          </Text>
+          <Text fit caps textFont="primary" textColor="secondary">
+            decided to use
+          </Text>
+          <Text fit caps textFont="primary" textColor="secondary">
+            react
+          </Text>
+        </Slide>
+
+        <Slide id="the-react-way-0" transition={["none"]} notes={notes(
+          "...and we really started think about how we were writing interfaces"
+        )}>
+          <Text bold fit caps textFont="primary" textColor="secondary">
+            React
+          </Text>
+          <Text fit caps textFont="primary" textColor="secondary">
+            Approach
+          </Text>
+        </Slide>
+
+        <Slide id="the-react-way-1" transition={["fade"]} notes={notes(
+          "by using jsx we immediately got to eliminate one of the pieces of the puzzle",
+          "and we thought, we can take this one step further..."
+        )}>
+          <Layout>
+              <div style={{"flex-basis": "30%", paddingTop: 80, marginRight: 20}}>
+                <Text textFont="primary" textColor="secondary">
+                  the
+                </Text>
+                <Text bold fit textFont="primary" textColor="secondary">
+                  setup
+                </Text>
+              </div>
+            <BarChartDiagram label={"spec"}/>
+          </Layout>
+          <Layout>
+            <Appear fid="1">
+            <Layout>
+              <JsDiagram label=".jsx"/>
+              <CssDiagram/>
+              <Heading size={3} textColor="secondary">
+                <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+              </Heading>
+              <ContainerDiagram label={"result"}/>
+            </Layout>
+            </Appear>
+          </Layout>
+        </Slide>
+
+        <Slide id="radium" notes={notes(
+          "so we built a tool called Radium",
+          "a set of tools for managing inline styles in react",
+          "in other words, we dont have to write css anymore"
+        )}>
+          <Text bold fit textFont="primary" textColor="paleRed">
+            Radium
+          </Text>
+          <Appear fid="1">
+            <Text textFont="primary" textColor="paleRed">
+              this machine kills CSS
+            </Text>
+          </Appear>
+        </Slide>
+
+        <Slide id="the-react-way-2" transition={["fade"]} notes={notes(
+          "and what we're left with is something really nice"
+        )}>
+          <Appear fid="1">
+            <Text bold fit textFont="primary" textColor="secondary">
+              self-contained components
+            </Text>
+          </Appear>
+          <Layout>
+            <BarChartDiagram label={"spec"}/>
+            <Heading size={3} textColor="secondary">
+              <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+            </Heading>
+            <JsDiagram label=".jsx"/>
+            <Heading size={3} textColor="secondary">
+              <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+            </Heading>
+            <ContainerDiagram label={"result"}/>
+          </Layout>
+        </Slide>
+
+        <Slide id="self-contained-components" transition={["fade"]} notes={notes(
+          "there are a lot of benefits to writing components this way"
+        )}>
+          <Heading fit size={3} textColor="secondary">
+            self-contained components
+          </Heading>
+          <List>
+            <ListItem><Appear fid="1">Modular</Appear></ListItem>
+            <ListItem><Appear fid="2">Composable</Appear></ListItem>
+            <ListItem><Appear fid="3">Logic <em>with</em> visual representation</Appear></ListItem>
+          </List>
+        </Slide>
+
+        <Slide id="react-and-data-viz" transition={["fade"]} notes={notes(
+          "this combination of React and Radium sounds pretty ideal for data viz",
+          "I guess now we just need to drop in d3"
+        )}>
+          <Text bold fit textFont="primary" textColor="secondary">
+            ideal for data viz
+          </Text>
+          <Layout>
+            <BarChartDiagram label={"spec"}/>
+            <Heading size={3} textColor="secondary">
+              <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+            </Heading>
+            <JsDiagram label=".jsx"/>
+            <Heading size={3} textColor="palerSand">
+              <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+            </Heading>
+            <BarChartDiagram label={"result"}/>
+          </Layout>
+        </Slide>
+
+        <Slide id="react-and-d3" transition={["fade"]} notes={notes(
+          "this combination of React and Radium sounds pretty ideal for data viz",
+          "I guess now we just need to drop in d3"
+        )}>
+          <Text fit textFont="primary" textColor="secondary">
+            Let's add <em>d3</em>
+          </Text>
+          <Layout>
+            <Appear fid="1"><BarChartDiagram label={"spec"}/></Appear>
+            <Appear fid="1">
+              <Heading size={3} textColor="secondary">
+                <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+              </Heading>
+            </Appear>
+            <Appear fid="2"><JsDiagram label=".jsx" highlights={[5, 6]}/></Appear>
+            <Appear fid="2">
+              <Heading size={3} textColor="paleRed">
+                <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+              </Heading>
+            </Appear>
+            <Appear fid="3"><Nope/></Appear>
+          </Layout>
+        </Slide>
+
+        <Slide id="nope" transition={["fade"]} notes={notes(
+          "so in summary"
+        )}>
+          <Heading fit caps size={3} textColor="paleRed">
+            nope
+          </Heading>
+          <List>
+            <ListItem><Appear fid="1">d3 makes extensive use of the DOM</Appear></ListItem>
+            <ListItem><Appear fid="2">d3 mutates data</Appear></ListItem>
+          </List>
+        </Slide>
+
+        <Slide id="nope-but" transition={["fade"]} notes={notes(
+          "But this is still a great idea",
+          "and it's going to take a lot of work to do it right"
+        )}>
+          <Text caps fit textFont="primary" textColor="secondary">
+            data viz
+          </Text>
+          <Text bold fit textFont="primary" textColor="secondary">
+            in React
+          </Text>
+          <Text caps bold fit textFont="primary" textColor="secondary">
+            is a great idea
+          </Text>
+        </Slide>
+
+        <Slide id="victory" transition={["fade"]} notes={notes(
+          "but we decided to build it anyway"
+        )}>
+          <Text fit textFont="serif" textColor="secondary">
+            Victory
+          </Text>
+        </Slide>
+
+        <Slide id="built with" transition={["fade"]} notes={notes(
+          "We started with react and radium, and used d3 just a little bit for some layouts",
+          "and scales. We're careful not to let it interact with the dom or mutate data"
+        )}>
+          <Text style={{fontSize: 75}} textFont="primary" textColor="secondary">
+            built with
+          </Text>
+          <Text style={{fontSize: 200}} textFont="primary" textColor="secondary">
+            React
+          </Text>
+          <Text style={{fontSize: 200}} textFont="primary" textColor="paleRed">
+            Radium
+          </Text>
+          <Text fit textFont="primary" textColor="secondary">
+            and just a little d3
+          </Text>
+        </Slide>
+
+        <Slide id="Play" transition={["fade"]} notes={notes(
+          "so in summary"
+        )}>
+          <PlaygroundWrapper codeText={examples.chart1}/>
+        </Slide>
+
+
+
       </CustomDeck>
     );
   }

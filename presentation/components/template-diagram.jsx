@@ -19,7 +19,7 @@ const rectStyle = {
 };
 
 const labelStyle = {
-  color: "#91887e",
+  color: "#1b2633",
   fontSize: 24,
 };
 

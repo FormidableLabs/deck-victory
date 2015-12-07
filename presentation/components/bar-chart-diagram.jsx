@@ -6,8 +6,8 @@ import {VictoryBar, VictoryAxis, VictoryChart} from "victory"
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #b5aca3",
-  width: "225px",
-  height: "225px",
+  width: "14em",
+  height: "14em",
   margin: "0 10 10 10"
 };
 
@@ -29,7 +29,7 @@ const barStyle = {
 };
 
 const labelStyle = {
-  color: "#91887e",
+  color: "#1b2633",
   fontSize: 24,
 };
 

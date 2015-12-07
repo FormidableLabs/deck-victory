@@ -6,8 +6,8 @@ import {VictoryLine, VictoryAxis, VictoryChart} from "victory"
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #b5aca3",
-  width: "225px",
-  height: "225px",
+  width: "14em",
+  height: "14em",
   margin: "0 10 10 10"
 };
 
@@ -23,20 +23,20 @@ const axisStyle = {
 
 const lineStyle = {
   data: {
-    stroke: "#b5aca3",
+    stroke: "#91887e",
     strokeWidth: 3
   }
 };
 
 const labelStyle = {
-  color: "#91887e",
+  color: "#1b2633",
   fontSize: 24,
 };
 
 @Radium
 export default class LineChartDiagram extends React.Component {
   static propTypes = {
-    highlightBars: React.PropTypes.bool,
+    highlightLines: React.PropTypes.bool,
     highlightAxes: React.PropTypes.bool,
     highlightColor: React.PropTypes.string,
     label: React.PropTypes.string
