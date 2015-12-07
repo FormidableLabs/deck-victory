@@ -15,35 +15,24 @@ export default class PlaygroundWrapper extends React.Component {
   static propTypes = {
     codeText: React.PropTypes.string
   }
-  getDocsStyles() {
-      return {
-        margin: "1rem 0 0 0",
-        padding: "1rem 0.5rem",
-        "@media (min-width: 70em)": {
-          flex: "1",
-          margin: 0,
-          padding: "60px 1rem"
-        }
-      };
-    }
-
-    getMainStyles() {
-      return {
-        display: "flex",
-        flex: "1 0 auto",
-        flexDirection: "column",
-        margin: "0 auto",
-        padding: "1rem",
-        "@media (min-width: 70em)": {
-          "flexDirection": "row",
-          margin: "0 2.5rem"
-        }
-      };
-    }
+  
+  getMainStyles() {
+    return {
+      display: "flex",
+      flex: "1 0 auto",
+      flexDirection: "column",
+      margin: "0 auto",
+      padding: "1rem",
+      "@media (min-width: 70em)": {
+        "flexDirection": "row",
+        margin: "0 2.5rem"
+      }
+    };
+  }
 
   render() {
     return (
-      <div className="Interactive">
+      <div className="Interactive" style={this.getMainStyles()}>
         <Playground
           codeText={this.props.codeText}
           scope={{
