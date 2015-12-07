@@ -127,7 +127,7 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide id="formidable"
+        <Slide
           notes={notes(
           "I work at a JS consultancy called Formidable",
           "were located in Fremont",
@@ -140,7 +140,7 @@ export default class extends React.Component {
         {/* ---------------------------------------------------------------
           * Background: the standard approach
           * --------------------------------------------------------------- */}
-        <Slide id="dashboards-0" transition={["fade"]}
+        <Slide transition={["fade"]}
           notes={notes(
           "So, this isn't very surprising",
           "we have access to more data more easliy than ever before",
@@ -162,7 +162,7 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide id="dashboards-1" transition={["none"]} notes={notes(
+        <Slide transition={["none"]} notes={notes(
           "So we figured out how to build custom dashboards",
           "and at first it went something like this..."
         )}>
@@ -177,7 +177,7 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide id="the-old-way-0" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "So we figured out how to build custom dashboards",
           "and at first it went something like this..."
         )}>
@@ -189,7 +189,7 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide id="the-old-way-1" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "The client would give us a spec, and we'd start setting up a project",
           "We'd write some JS, and some flavor of html template, and some css",
           "look at that beautiful separation of conerns",
@@ -224,7 +224,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="d3-0" notes={notes(
+        <Slide notes={notes(
           "of course we picked d3",
           "how many of you have used d3? pretty much everyone?"
         )}>
@@ -233,7 +233,7 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide id="d3-1" transition={["none"]} notes={notes(
+        <Slide transition={["none"]} notes={notes(
           "so you know it has its share of oddities",
           "but once you get past the learning curve, it's really very useful"
         )}>
@@ -242,7 +242,7 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide id="diagram-d3-0" notes={notes(
+        <Slide notes={notes(
           "so we'd write a bunch of d3, and a bunch more css",
           "to do this really well it takes quite a bit of design effort in addition to code",
           "maybe you're equipped to take it all on yourself",
@@ -283,7 +283,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="diagram-d3-1" notes={notes(
+        <Slide notes={notes(
           "and then of course the spec would change"
         )}>
           <Layout>
@@ -305,7 +305,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="diagram-d3-2" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "so we end up writing a second view, since this chart is dealing with different data",
           "we need to write more html too, so we have somewhere to append the second chart",
           "and depending on how these charts are layed out, we might have to write a bunch more css"
@@ -334,7 +334,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="diagram-d3-3" transition={["none"]} notes={notes(
+        <Slide transition={["none"]} notes={notes(
           "that's a lot of repetition. and a lot of context switching"
         )}>
           <Layout>
@@ -361,7 +361,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="the-old-way-summary" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "so overall the we've found the standard approach to be..."
         )}>
           <Heading fit size={3} textColor="secondary">
@@ -375,7 +375,7 @@ export default class extends React.Component {
           </List>
         </Slide>
 
-        <Slide id="the-old-way-grade" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "I'd give it a B-, not so bad, but definitely room for improvement"
         )}>
           <Heading fit size={3} textColor="secondary">
@@ -390,7 +390,7 @@ export default class extends React.Component {
           * Background: React and Radium
           * --------------------------------------------------------------- */}
 
-        <Slide id="react-0" transition={["none"]} notes={notes(
+        <Slide transition={["none"]} notes={notes(
           "...and then about a year ago"
         )}>
           <Text textFont="primary" textColor="secondary">
@@ -407,7 +407,7 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide id="the-react-way-0" transition={["none"]} notes={notes(
+        <Slide transition={["none"]} notes={notes(
           "...and we really started think about how we were writing interfaces"
         )}>
           <Text bold fit caps textFont="primary" textColor="secondary">
@@ -418,7 +418,7 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide id="the-react-way-1" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "by using jsx we immediately got to eliminate one of the pieces of the puzzle",
           "and we thought, we can take this one step further..."
         )}>
@@ -447,7 +447,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="radium" notes={notes(
+        <Slide notes={notes(
           "so we built a tool called Radium",
           "a set of tools for managing inline styles in react",
           "in other words, we dont have to write css anymore"
@@ -462,7 +462,7 @@ export default class extends React.Component {
           </Appear>
         </Slide>
 
-        <Slide id="the-react-way-2" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "and what we're left with is something really nice"
         )}>
           <Appear fid="1">
@@ -483,7 +483,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="self-contained-components" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "there are a lot of benefits to writing components this way"
         )}>
           <Heading fit size={3} textColor="secondary">
@@ -496,7 +496,7 @@ export default class extends React.Component {
           </List>
         </Slide>
 
-        <Slide id="react-and-data-viz" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "this combination of React and Radium sounds pretty ideal for data viz",
           "I guess now we just need to drop in d3"
         )}>
@@ -516,7 +516,7 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="react-and-d3" transition={["fade"]} notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "this combination of React and Radium sounds pretty ideal for data viz",
           "I guess now we just need to drop in d3"
         )}>
@@ -540,8 +540,9 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide id="nope" transition={["fade"]} notes={notes(
-          "so in summary"
+        <Slide transition={["fade"]} notes={notes(
+          "so just wrapping d3 in React was not a great solution",
+          "because d3 and React have incompatible DOM models and methods for handling data"
         )}>
           <Heading fit caps size={3} textColor="paleRed">
             nope
@@ -552,35 +553,31 @@ export default class extends React.Component {
           </List>
         </Slide>
 
-        <Slide id="nope-but" transition={["fade"]} notes={notes(
-          "But this is still a great idea",
-          "and it's going to take a lot of work to do it right"
+        <Slide transition={["fade"]} notes={notes(
+          "but it didn't work...",
+          "but that doesn't change the fact that this is still a great idea"
         )}>
-          <Text caps fit textFont="primary" textColor="secondary">
-            data viz
+          <Text bold  caps fit textFont="primary" textColor="secondary">
+            This is a great idea
           </Text>
-          <Text bold fit textFont="primary" textColor="secondary">
-            in React
-          </Text>
-          <Text caps bold fit textFont="primary" textColor="secondary">
-            is a great idea
-          </Text>
+          <Layout>
+            <BarChartDiagram label={"spec"}/>
+            <Heading size={3} textColor="secondary">
+              <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+            </Heading>
+            <JsDiagram label=".jsx"/>
+            <Heading size={3} textColor="palerSand">
+              <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+            </Heading>
+            <BarChartDiagram label={"result"}/>
+          </Layout>
         </Slide>
 
-        <Slide id="victory" transition={["fade"]} notes={notes(
-          "but we decided to build it anyway"
+        <Slide transition={["fade"]} notes={notes(
+          "so we thought"
         )}>
-          <Text fit textFont="serif" textColor="secondary">
-            Victory
-          </Text>
-        </Slide>
-
-        <Slide id="built with" transition={["fade"]} notes={notes(
-          "We started with react and radium, and used d3 just a little bit for some layouts",
-          "and scales. We're careful not to let it interact with the dom or mutate data"
-        )}>
-          <Text style={{fontSize: 75}} textFont="primary" textColor="secondary">
-            built with
+          <Text style={{fontSize: 65}} textFont="primary" textColor="secondary">
+            what if we use
           </Text>
           <Text style={{fontSize: 200}} textFont="primary" textColor="secondary">
             React
@@ -589,11 +586,107 @@ export default class extends React.Component {
             Radium
           </Text>
           <Text fit textFont="primary" textColor="secondary">
-            and just a little d3
+            and just a little bit of d3
           </Text>
         </Slide>
 
-        <Slide id="Play" transition={["fade"]} notes={notes(
+        <Slide transition={["none"]} notes={notes(
+          "what do I mean by just a little bit of d3",
+          "Well we couldn't use any of the pieces that interacted with the DOM",
+          "We also needed to avoid data mutation",
+          "And we weren't really excited about keeping the api"
+        )}>
+          <Text fit textFont="primary" textColor="paleRed">
+            just a little bit of d3
+          </Text>
+          <Appear>
+            <Text bold fit textFont="primary" textColor="secondary"
+              style={{textDecoration: "line-through", padding: 2}}>
+              DOM Manipulation
+            </Text>
+          </Appear>
+          <Appear>
+            <Text bold fit textFont="primary" textColor="secondary"
+              style={{textDecoration: "line-through", padding: 2}}>
+              Data Mutation
+            </Text>
+          </Appear>
+          <Appear>
+            <Text bold fit textFont="monospace" textColor="secondary"
+              style={{textDecoration: "line-through", padding: 2}}>
+              .enter()
+            </Text>
+          </Appear>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+          "And all we're left with is some math",
+        )}>
+          <Text fit textFont="primary" textColor="paleRed">
+            just a little bit of d3
+          </Text>
+          <Text bold fit textFont="primary" textColor="secondary">
+            {"Math"}
+          </Text>
+        </Slide>
+
+        <Slide notes={notes(
+          "so now the question becomes"
+        )}>
+          <Text style={{fontSize: 65}} textFont="primary" textColor="secondary">
+            what can we build with
+          </Text>
+          <Text style={{fontSize: 180}} textFont="primary" textColor="secondary">
+            React
+          </Text>
+          <Text style={{fontSize: 180}} textFont="primary" textColor="paleRed">
+            Radium
+          </Text>
+          <Text fit textFont="primary" textColor="secondary">
+            and math
+          </Text>
+        </Slide>
+
+        <Slide notes={notes(
+          "well, you could probably make anything"
+        )}>
+          <Text fit caps textFont="primary" textColor="secondary">
+            probably
+          </Text>
+          <Text fit caps textFont="primary" textColor="secondary">
+            anything
+          </Text>
+        </Slide>
+
+        <Slide notes={notes(
+          "but we had something a little more specific in mind"
+        )}>
+          <Text fit textFont="primary" textColor="secondary">
+            anything
+          </Text>
+        </Slide>
+
+        <Slide id="victory" transition={["fade"]} notes={notes(
+          "so we decided to build victory"
+        )}>
+          <Text fit textFont="serif" textColor="secondary">
+            Victory
+          </Text>
+        </Slide>
+
+        <Slide id="victory-example" transition={["fade"]} notes={notes(
+          "so we decided to build victory"
+        )}>
+          <Text fit textFont="serif" textColor="secondary">
+            awesome example
+          </Text>
+        </Slide>
+
+
+
+
+
+        <Slide transition={["fade"]} notes={notes(
           "so in summary"
         )}>
           <PlaygroundWrapper codeText={examples.chart1}/>
