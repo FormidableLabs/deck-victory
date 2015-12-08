@@ -39,6 +39,7 @@ export default class BarChartDiagram extends React.Component {
     highlightBars: React.PropTypes.bool,
     highlightAxes: React.PropTypes.bool,
     highlightColor: React.PropTypes.string,
+    animate: React.PropTypes.bool,
     label: React.PropTypes.string
   };
 
@@ -46,8 +47,36 @@ export default class BarChartDiagram extends React.Component {
     highlightColor: "#bd4139",
     highlightBars: false,
     highlightAxes: false,
-    label: "chart"
+    animate: false,
+    label: ""
   };
+
+  constructor(props) {
+      super(props);
+      this.state = {
+        data: this.getData(),
+      };
+    }
+
+    componentDidMount() {
+      if (this.props.animate) {
+        setInterval(() => {
+          this.setState({
+            data: this.getData(),
+          });
+        }, 2000);
+      }
+    }
+
+    getData() {
+      return [
+        {x: 1, y: _.random(1, 5)},
+        {x: 2, y: _.random(1, 5)},
+        {x: 3, y: _.random(1, 5)},
+        {x: 4, y: _.random(1, 5)},
+        {x: 5, y: _.random(1, 5)}
+      ];
+    }
 
   getAxisStyle() {
     return this.props.highlightAxes ?
@@ -61,16 +90,6 @@ export default class BarChartDiagram extends React.Component {
       barStyle;
   }
 
-  getBarData() {
-    return [
-      {x: 1, y: 3},
-      {x: 2, y: 1},
-      {x: 3, y: 2},
-      {x: 4, y: 4},
-      {x: 5, y: 5}
-    ];
-  }
-
   render() {
     return (
       <div>
@@ -79,7 +98,7 @@ export default class BarChartDiagram extends React.Component {
           <VictoryChart width={225} height={225} padding={35}
             standalone={false} domain={{x: [0, 5.8], y: [0, 5]}}
           >
-            <VictoryBar style={this.getBarStyle()} data={this.getBarData()}/>
+            <VictoryBar animate={{velocity: 0.01}} style={this.getBarStyle()} data={this.state.data}/>
             <VictoryAxis style={this.getAxisStyle()}/>
             <VictoryAxis dependentAxis style={this.getAxisStyle()}/>
           </VictoryChart>

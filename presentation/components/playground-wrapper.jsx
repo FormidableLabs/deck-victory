@@ -6,10 +6,6 @@ import {
   VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryScatter, VictoryPie
 } from "victory"
 
-const examples = {
-  chart1: require("!raw!!../examples/victory-chart-1")
-}
-
 @Radium
 export default class PlaygroundWrapper extends React.Component {
   static propTypes = {
@@ -33,7 +29,7 @@ export default class PlaygroundWrapper extends React.Component {
         <Playground
           codeText={this.props.codeText}
           scope={{
-            React, VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryScatter, V
+            React, VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryScatter, VictoryPie, V
           }}
           noRender={true}
           theme="elegant"

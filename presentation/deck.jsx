@@ -24,10 +24,14 @@ import JsDiagram from "./components/js-diagram";
 import TemplateDiagram from "./components/template-diagram";
 import BarChartDiagram from "./components/bar-chart-diagram";
 import LineChartDiagram from "./components/line-chart-diagram";
+import ScatterChartDiagram from "./components/scatter-chart-diagram";
+import PieChartDiagram from "./components/pie-chart-diagram";
 import PlaygroundWrapper from "./components/playground-wrapper";
+import Showcase from "./components/showcase";
 //examples
 const examples = {
-  chart1: require("!raw!!./examples/victory-chart-1")
+  chart1: require("!raw!!./examples/victory-chart-1"),
+  sensibleDefaults: require("!raw!!./examples/sensible-defaults")
 };
 
 // Images
@@ -119,7 +123,7 @@ export default class extends React.Component {
 
         <Slide id="title"
           notes={
-          "I want to tell you about data vix components for react, but first a little background..."}>
+          "I want to tell you about data viz components for react, but first a little background..."}>
           <Image width="100%" src={images.victoryLogo}/>
           <Text fit textFont="secondary" textColor="secondary">
             data visualization for React
@@ -128,10 +132,9 @@ export default class extends React.Component {
 
         <Slide
           notes={notes(
-          "I work at a JS consultancy called Formidable",
-          "were located in Fremont",
-          "I've been working for formidable for about 2 years",
-          "my colleagues and I have worked on projects for a bunch of different clients",
+          "I work at Formidable",
+          "JS consultancy",
+          "projects for a bunch of different clients",
           "I started to notice some trends")}>
           <Image width="100%" src={images.formidableLogo}/>
         </Slide>
@@ -283,18 +286,18 @@ export default class extends React.Component {
         </Slide>
 
         <Slide notes={notes(
-          "and then of course the spec would change"
+          "the chart is so nice, the client wants us to build another one"
         )}>
           <Layout>
             <div style={{"flex-basis": "60%", paddingTop: 120, marginRight: 20}}>
               <Text textFont="secondary" textColor="secondary">
-                the spec
+                the scope
               </Text>
               <Text bold fit textFont="secondary" textColor="secondary">
                 always
               </Text>
               <Text fit textFont="secondary" textColor="secondary">
-                changes
+                expands
               </Text>
             </div>
             <Fill>
@@ -307,7 +310,8 @@ export default class extends React.Component {
         <Slide transition={["fade"]} notes={notes(
           "so we end up writing a second view, since this chart is dealing with different data",
           "we need to write more html too, so we have somewhere to append the second chart",
-          "and depending on how these charts are layed out, we might have to write a bunch more css"
+          "and depending on how these charts are layed out, we might have to write a bunch more css",
+          "this is pretty repetitive, but it's only two charts, so maybe we dont take the time to refactor"
         )}>
           <Layout>
             <Fit>
@@ -333,8 +337,32 @@ export default class extends React.Component {
           </Layout>
         </Slide>
 
+        <Slide notes={notes(
+          "and then of course the spec changes"
+        )}>
+          <Layout>
+            <div style={{"flex-basis": "60%", paddingTop: 120, marginRight: 20}}>
+              <Text textFont="secondary" textColor="secondary">
+                the spec
+              </Text>
+              <Text bold fit textFont="secondary" textColor="secondary">
+                always
+              </Text>
+              <Text fit textFont="secondary" textColor="secondary">
+                changes
+              </Text>
+            </div>
+            <Fill>
+              <BarChartDiagram highlightAxes label={"spec #1"}/>
+              <LineChartDiagram highlightAxes label={"spec #2"}/>
+            </Fill>
+          </Layout>
+        </Slide>
+
         <Slide transition={["none"]} notes={notes(
-          "that's a lot of repetition. and a lot of context switching"
+          "And to match the new spec, we need to make changes all over the place",
+          "not only is this a lot of annoying context switching, it's also pretty error prone",
+          "things can get out of sync in subtle ways"
         )}>
           <Layout>
             <Fit>
@@ -361,7 +389,8 @@ export default class extends React.Component {
         </Slide>
 
         <Slide transition={["fade"]} notes={notes(
-          "so overall the we've found the standard approach to be..."
+          "so overall the we've found the standard approach our standard approach had",
+          "some room for improvement"
         )}>
           <Heading fit textFont="secondary" size={3} textColor="secondary">
             Developer Experience
@@ -372,17 +401,6 @@ export default class extends React.Component {
             <ListItem><Appear fid="3">Time consuming</Appear></ListItem>
             <ListItem><Appear fid="4">Still kind of fun</Appear></ListItem>
           </List>
-        </Slide>
-
-        <Slide transition={["fade"]} notes={notes(
-          "I'd give it a B-, not so bad, but definitely room for improvement"
-        )}>
-          <Heading fit textFont="secondary" size={3} textColor="secondary">
-            Developer Experience
-          </Heading>
-          <Text bold textFont="secondary" style={{fontSize: 220}} textColor="paleRed">
-            B-
-          </Text>
         </Slide>
 
         {/* ---------------------------------------------------------------
@@ -556,8 +574,8 @@ export default class extends React.Component {
           "but it didn't work...",
           "but that doesn't change the fact that this is still a great idea"
         )}>
-          <Text bold  caps fit textFont="secondary" textColor="secondary">
-            This is a great idea
+          <Text bold  fit textFont="secondary" textColor="secondary">
+            How do we get there?
           </Text>
           <Layout>
             <BarChartDiagram label={"spec"}/>
@@ -630,7 +648,8 @@ export default class extends React.Component {
         </Slide>
 
         <Slide notes={notes(
-          "so now the question becomes"
+          "so now the question becomes",
+          "probably anything"
         )}>
           <Text style={{fontSize: 65}} textFont="secondary" textColor="secondary">
             what can we build with
@@ -646,39 +665,194 @@ export default class extends React.Component {
           </Text>
         </Slide>
 
-        <Slide notes={notes(
-          "well, you could probably make anything"
-        )}>
-          <Text fit caps textFont="secondary" textColor="secondary">
-            probably
-          </Text>
-          <Text fit caps textFont="secondary" textColor="secondary">
-            anything
-          </Text>
-        </Slide>
-
-        <Slide notes={notes(
+        <Slide transition={["fade"]} notes={notes(
           "but we had something a little more specific in mind"
         )}>
+          <Image width="50%" src={images.victoryLogo}/>
 
+          <Layout>
+            <BarChartDiagram animate/>
+            <LineChartDiagram animate/>
+            <ScatterChartDiagram animate/>
+            <PieChartDiagram animate/>
+          </Layout>
         </Slide>
 
-        <Slide id="victory" transition={["fade"]} notes={notes(
-          "so we decided to build victory"
-        )}>
-          <Image width="100%" src={images.victoryLogo}/>
-        </Slide>
-
-        <Slide id="victory-example" transition={["fade"]} notes={notes(
-          "so we decided to build victory"
-        )}>
-          <Text fit textFont="serif" textColor="secondary">
-            awesome example
+        <Slide transition={["fade"]}>
+          <Image width="50%" src={images.victoryLogo}/>
+          <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            An ecosystem of data viz components
+          </Text>
+          <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            for React
           </Text>
         </Slide>
 
+        <Slide transition={["fade"]} notes={notes(
+          "There are already several components in the ecosystem",
+          "Before I go into more detail about any one of these",
+          "I'd like to talk about what defines the ecosystem as a whole"
+        )}>
+          <Image width="50%" src={images.victoryLogo}/>
+          <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            VicoryChart
+          </Text>
+          <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            VictoryAxis
+          </Text>
+          <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            VictoryBar
+          </Text>
+          <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            VictoryLine
+          </Text>
+          <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            VictoryScatter
+          </Text>
+          <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            VictoryPie
+          </Text>
+        </Slide>
 
+        <Slide transition={["none"]} notes={notes(
+            "opinions"
+        )}>
+          <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
+          Data viz should be
+          </Text>
+          <Layout>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              easy
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              composable
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              powerful
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              reusable
+            </Text>
+          </Layout>
+        </Slide>
 
+        <Slide transition={["none"]} notes={notes(
+            "opinions"
+        )}>
+          <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
+          Data viz should be
+          </Text>
+          <Layout>
+            <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
+              easy
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              composable
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              powerful
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              reusable
+            </Text>
+          </Layout>
+        </Slide>
+
+        <Slide transition={["fade"]} notes={notes(
+            "opinions"
+        )}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 110, paddingBottom: 50}}>
+              clear API
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 100, paddingBottom: 50}}>
+              sensible defaults
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90, paddingBottom: 50}}>
+              familiar style syntax
+            </Text>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+          "sensible default data",
+          "doesn't get easier"
+        )}>
+          <PlaygroundWrapper codeText={"<VictoryPie/>"}/>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+          "add your own data",
+          "style syntax",
+          "lets use brand colors",
+          "change color"
+        )}>
+          <PlaygroundWrapper codeText={
+            "<VictoryPie\n" +
+            "  data={[\n" +
+            "    {x: '<5', y: 4279},\n" +
+            "    {x: '5-13', y: 9182},\n" +
+            "    {x: '14-17', y: 5511},\n" +
+            "    {x: '18-24', y: 7164}\n" +
+            "  ]}\n" +
+            "  style={{\n" +
+            "    labels: {\n" +
+            "      fontSize: 20,\n" +
+            "      fill: 'white'\n" +
+            "    }\n" +
+            "  }}\n" +
+            "  sliceColors={[\n" +
+            "    '#b5aca3',\n" +
+            "    '#91887e',\n" +
+            "    '#67615c',\n" +
+            "    '#d1c7bc'\n" +
+            "  ]}\n" +
+            "/>"
+          }/>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+          "some more interesting props",
+          "all pretty obvious to use",
+          "makes it easy to play, and decide how the data looks best"
+        )}>
+          <PlaygroundWrapper codeText={
+            "<VictoryPie\n" +
+            "  innerRadius={100}\n" +
+            "  startAngle={-90}\n" +
+            "  endAngle={90}\n" +
+            "  padAngle={2}\n" +
+            "/>"
+          }/>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+            "opinions"
+        )}>
+          <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
+          Data viz should be
+          </Text>
+          <Layout>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              easy
+            </Text>
+            <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
+              composable
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              powerful
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              reusable
+            </Text>
+          </Layout>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+          "let's take a look at chart",
+          "more sensible defaults",
+          "this is actually a composed example"
+        )}>
+          <PlaygroundWrapper codeText={"<VictoryChart/>"}/>
+        </Slide>
 
 
         <Slide transition={["fade"]} notes={notes(

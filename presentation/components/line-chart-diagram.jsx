@@ -39,6 +39,7 @@ export default class LineChartDiagram extends React.Component {
     highlightLines: React.PropTypes.bool,
     highlightAxes: React.PropTypes.bool,
     highlightColor: React.PropTypes.string,
+    animate: React.PropTypes.bool,
     label: React.PropTypes.string
   };
 
@@ -46,8 +47,39 @@ export default class LineChartDiagram extends React.Component {
     highlightColor: "#bd4139",
     highlightLines: false,
     highlightAxes: false,
-    label: "chart"
+    animate: false,
+    label: ""
   };
+
+  constructor(props) {
+      super(props);
+      this.state = {
+        data: this.getData(),
+      };
+    }
+
+    componentDidMount() {
+      if (this.props.animate) {
+        setInterval(() => {
+          this.setState({
+            data: this.getData(),
+          });
+        }, 2000);
+      }
+    }
+
+    getData() {
+      return [
+        {x: 0, y: 0},
+        {x: 1, y: _.random(1, 3)},
+        {x: 2, y: _.random(3, 5)},
+        {x: 3, y: _.random(1, 5)},
+        {x: 4, y: _.random(1, 3)},
+        {x: 5, y: _.random(3, 5)},
+        {x: 6, y: _.random(1, 5)},
+        {x: 7, y: _.random(3, 5)}
+      ];
+    }
 
   getAxisStyle() {
     return this.props.highlightAxes ?
@@ -61,26 +93,20 @@ export default class LineChartDiagram extends React.Component {
       lineStyle;
   }
 
-  getLineData() {
-    return [
-      {x: 0, y: 0},
-      {x: 1, y: 2},
-      {x: 2, y: 1},
-      {x: 3, y: 4},
-      {x: 4, y: 3},
-      {x: 5, y: 5}
-    ];
-  }
-
   render() {
     return (
       <div>
         <h1 style={labelStyle}>{this.props.label}</h1>
         <svg style={containerStyle}>
           <VictoryChart width={225} height={225} padding={35}
-            standalone={false} domain={{x: [0, 5.8], y: [0, 5]}}
+            standalone={false} domain={{x: [0, 7], y: [0, 5]}}
           >
-            <VictoryLine style={this.getLineStyle()} data={this.getLineData()}/>
+            <VictoryLine
+              animate={{velocity: 0.01}}
+              style={this.getLineStyle()}
+              data={this.state.data}
+              interpolation="basis"
+            />
             <VictoryAxis style={this.getAxisStyle()}/>
             <VictoryAxis dependentAxis style={this.getAxisStyle()}/>
           </VictoryChart>
