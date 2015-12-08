@@ -11,63 +11,92 @@ html, body {
 }
 
 .Interactive {
-  min-height: "333px";
+  min-height: 333px;
+  text-align: left;
+  width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .Interactive .playground {
-  display: "flex";
-  flex-wrap: "wrap";
-  margin-bottom: "24px";
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+  width: 100%;
 }
 
-.Interactive:before, .Interactive .playgroundPreview:before {
-  font-family: "Didot, Bodoni MT, Cochin, Baskerville, Goudy Old Style, Bitstream Charter, serif";
-  font-weight: "bold";
-  font-size: "1rem";
+.Interactive .playgroundCode:before, .Interactive .playgroundPreview:before {
+  font-weight: bold;
+  font-size: 1rem;
   line-height: 1;
-  letter-spacing: "0.05em";
-  text-transform: "uppercase";
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
 }
 
-.Interactive:before {
+.Interactive .playgroundCode:before {
   content: "Interactive Code";
+  position: absolute;
+  top: -1.4em;
+  left: 0;
+  line-height: 1.2;
 }
 
 .Interactive .playgroundCode {
-  flex: "0 0 100%";
-  max-width: "300px";
-  vertical-align: "top";
-  background: "#fff";
-  font-family: "Source Code Pro, Inconsolata, Courier New, Courier, monospace";
-  font-size: "1rem";
+  flex: 0 0 100%;
+  position: relative;
+  vertical-align: top;
+  background: #ffffff;
+  font-size: 1rem;
   line-height: 1.2;
-  margin-bottom: "30px";
-  padding: "16px 16px 0 16px";
-  border: "1px solid #ebe3db";
-}
-
-.Interactive .playgroundPreview {
-  flex: "0 0 100%";
-  vertical-align: "top";
-  background: "#fff";
-  position: "relative";
-  border: "1px solid #ebe3db";
+  margin-bottom: 2em;
+  padding: 16px 16px 0 16px;
+  border: 1px solid #ebe3db;
 }
 
 .Interactive .playgroundPreview:before {
   content: "Live Preview";
-  position: "absolute";
-  top: "-18px";
-}
-
-.Interactive pre, .CodeMirror-code {
-  font-family: "'Source Code Pro', 'Inconsolata', 'Courier New', 'Courier', monospace";
-  font-size: "1rem";
+  position: absolute;
+  top: -1.4em;
+  left: 0;
   line-height: 1.2;
 }
 
+.Interactive .playgroundPreview {
+  flex: 0 0 100%;
+  vertical-align: top;
+  background: #ffffff;
+  position: relative;
+  border: 1px solid #ebe3db;
+}
+
+.Interactive pre, .CodeMirror-code {
+  font-family: Source Code Pro, Inconsolata, Courier New, Courier, monospace;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+@media screen and (min-width: 70em) {
+  .Interactive .playground {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .Interactive .playgroundCode {
+    display: flex;
+    flex: 1;
+    margin-right: 0.5em;
+    margin-bottom: 0;
+  }
+
+  .Interactive .playgroundPreview {
+    display: flex;
+    flex: 1;
+    margin-left: 0.5em;
+  }
+}
+
 .CodeMirror {
-  height: "auto";
+  height: auto;
 }
 
 .spectacle-slide {

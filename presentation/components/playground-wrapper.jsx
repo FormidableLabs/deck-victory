@@ -15,17 +15,14 @@ export default class PlaygroundWrapper extends React.Component {
   static propTypes = {
     codeText: React.PropTypes.string
   }
-  
+
   getMainStyles() {
     return {
       display: "flex",
       flex: "1 0 auto",
       flexDirection: "column",
-      margin: "0 auto",
-      padding: "1rem",
       "@media (min-width: 70em)": {
-        "flexDirection": "row",
-        margin: "0 2.5rem"
+        "flexDirection": "row"
       }
     };
   }
@@ -38,6 +35,7 @@ export default class PlaygroundWrapper extends React.Component {
           scope={{
             React, VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryScatter, V
           }}
+          noRender={true}
           theme="elegant"
         />
       </div>

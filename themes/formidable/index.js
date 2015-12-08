@@ -38,12 +38,9 @@ const colors = {
 };
 
 const fonts = {
-  primary: "'Poppins', 'Futura', 'Century Gothic', 'Trebuchet MS', Helvetica, sans-serif",
-  secondary: "'Open Sans', 'Helvetica Neue', Helvetica, sans-serif",
-  tertiary: "'Anonymous Pro', Inconsolata, monospace",
-  sansSerif: "'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif",
-  serif: "'Didot', 'Bodoni MT', 'Cochin', 'Baskerville', 'Goudy Old Style', 'Bitstream Charter', serif",
-  monospace: "'Source Code Pro', 'Inconsolata', 'Courier New', 'Courier', monospace"
+  secondary: "'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif",
+  primary: "'Didot', 'Bodoni MT', 'Cochin', 'Baskerville', 'Goudy Old Style', 'Bitstream Charter', serif",
+  tertiary: "'Source Code Pro', 'Inconsolata', 'Courier New', 'Courier', monospace"
 };
 
 // Light Blue: 88A0A8 (some headings)
@@ -71,15 +68,15 @@ theme.components.heading.h1.color = colors.secondary;
 theme.components.heading.h1.fontFamily = fonts.primary;
 theme.components.heading.h2.color = colors.secondary;
 theme.components.heading.h2.fontFamily = fonts.primary;
-theme.components.heading.h2.lineHeight = "1.2";
+theme.components.heading.h2.lineHeight = "1";
 theme.components.heading.h3.fontFamily = fonts.primary;
-theme.components.heading.h3.lineHeight = "1.2";
+theme.components.heading.h3.lineHeight = "1";
 theme.components.heading.h4.fontFamily = fonts.primary;
-theme.components.heading.h4.lineHeight = "1.2";
+theme.components.heading.h4.lineHeight = "1";
 theme.components.heading.h5.fontFamily = fonts.primary;
-theme.components.heading.h5.lineHeight = "1.2";
+theme.components.heading.h5.lineHeight = "1";
 theme.components.heading.h6.fontFamily = fonts.primary;
-theme.components.heading.h6.lineHeight = "1.2";
+theme.components.heading.h6.lineHeight = "1";
 theme.components.link.color = colors.darkGray;
 theme.components.list.listStylePosition = "outside";
 theme.components.text.fontFamily = fonts.secondary;

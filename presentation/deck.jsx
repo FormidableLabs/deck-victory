@@ -37,7 +37,8 @@ import preloader from "spectacle/src/utils/preloader";
 const images = {
   polygons: require("../assets/img/bg/formidable/formidangles-dark.svg"),
   polygonsGray: require("../assets/img/bg/formidable/formidangles-gray.svg"),
-  formidableLogo: require("../assets/img/logo/formidable-black.svg")
+  formidableLogo: require("../assets/img/logo/formidable-black.svg"),
+  victoryLogo: require("../assets/img/logo/victory.svg")
 };
 
 // Preload all images
@@ -119,10 +120,8 @@ export default class extends React.Component {
         <Slide id="title"
           notes={
           "I want to tell you about data vix components for react, but first a little background..."}>
-          <Text fit textFont="serif" textColor="secondary">
-            Victory
-          </Text>
-          <Text fit textFont="serif" textColor="secondary">
+          <Image width="100%" src={images.victoryLogo}/>
+          <Text fit textFont="secondary" textColor="secondary">
             data visualization for React
           </Text>
         </Slide>
@@ -154,10 +153,10 @@ export default class extends React.Component {
           "when our clients say 'we want dashboards', we know they really mean"
         )}>
 
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             Everyone wants
           </Text>
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             Dashboards
           </Text>
         </Slide>
@@ -166,13 +165,13 @@ export default class extends React.Component {
           "So we figured out how to build custom dashboards",
           "and at first it went something like this..."
         )}>
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             Everyone wants
           </Text>
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text bold fit caps textFont="secondary" textColor="paleRed">
             custom
           </Text>
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             Dashboards
           </Text>
         </Slide>
@@ -181,10 +180,10 @@ export default class extends React.Component {
           "So we figured out how to build custom dashboards",
           "and at first it went something like this..."
         )}>
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text bold fit caps textFont="secondary" textColor="secondary">
             The standard
           </Text>
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text bold fit caps textFont="secondary" textColor="secondary">
             approach
           </Text>
         </Slide>
@@ -198,10 +197,10 @@ export default class extends React.Component {
         )}>
           <Layout>
               <div style={{"flex-basis": "30%", paddingTop: 80, marginRight: 20}}>
-                <Text textFont="primary" textColor="secondary">
+                <Text textFont="secondary" textColor="secondary">
                   the
                 </Text>
-                <Text bold fit textFont="primary" textColor="secondary">
+                <Text bold fit textFont="secondary" textColor="secondary">
                   setup
                 </Text>
               </div>
@@ -228,7 +227,7 @@ export default class extends React.Component {
           "of course we picked d3",
           "how many of you have used d3? pretty much everyone?"
         )}>
-          <Text bold fit textFont="primary" textColor="secondary">
+          <Text bold fit textFont="secondary" textColor="secondary">
             enter d3
           </Text>
         </Slide>
@@ -237,7 +236,7 @@ export default class extends React.Component {
           "so you know it has its share of oddities",
           "but once you get past the learning curve, it's really very useful"
         )}>
-          <Text bold fit textFont="primary" textColor="secondary">
+          <Text bold fit textFont="secondary" textColor="secondary">
             .enter( ) d3
           </Text>
         </Slide>
@@ -252,10 +251,10 @@ export default class extends React.Component {
         )}>
           <Layout>
               <div style={{"flex-basis": "40%", paddingTop: 100, marginRight: 20}}>
-                <Text textFont="primary" textColor="secondary">
+                <Text textFont="secondary" textColor="secondary">
                   creating a chart
                 </Text>
-                <Text bold fit textFont="primary" textColor="paleRed">
+                <Text bold fit textFont="secondary" textColor="paleRed">
                   with d3
                 </Text>
               </div>
@@ -288,13 +287,13 @@ export default class extends React.Component {
         )}>
           <Layout>
             <div style={{"flex-basis": "60%", paddingTop: 120, marginRight: 20}}>
-              <Text textFont="primary" textColor="secondary">
+              <Text textFont="secondary" textColor="secondary">
                 the spec
               </Text>
-              <Text bold fit textFont="primary" textColor="secondary">
+              <Text bold fit textFont="secondary" textColor="secondary">
                 always
               </Text>
-              <Text bold fit textFont="primary" textColor="secondary">
+              <Text fit textFont="secondary" textColor="secondary">
                 changes
               </Text>
             </div>
@@ -364,7 +363,7 @@ export default class extends React.Component {
         <Slide transition={["fade"]} notes={notes(
           "so overall the we've found the standard approach to be..."
         )}>
-          <Heading fit size={3} textColor="secondary">
+          <Heading fit textFont="secondary" size={3} textColor="secondary">
             Developer Experience
           </Heading>
           <List>
@@ -378,10 +377,10 @@ export default class extends React.Component {
         <Slide transition={["fade"]} notes={notes(
           "I'd give it a B-, not so bad, but definitely room for improvement"
         )}>
-          <Heading fit size={3} textColor="secondary">
+          <Heading fit textFont="secondary" size={3} textColor="secondary">
             Developer Experience
           </Heading>
-          <Text style={{fontSize: 248}} textColor="paleRed">
+          <Text bold textFont="secondary" style={{fontSize: 220}} textColor="paleRed">
             B-
           </Text>
         </Slide>
@@ -393,16 +392,16 @@ export default class extends React.Component {
         <Slide transition={["none"]} notes={notes(
           "...and then about a year ago"
         )}>
-          <Text textFont="primary" textColor="secondary">
+          <Text textFont="secondary" textColor="secondary">
             then all of a sudden...
           </Text>
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text bold fit caps textFont="secondary" textColor="secondary">
             everyone
           </Text>
-          <Text fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             decided to use
           </Text>
-          <Text fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             react
           </Text>
         </Slide>
@@ -410,10 +409,10 @@ export default class extends React.Component {
         <Slide transition={["none"]} notes={notes(
           "...and we really started think about how we were writing interfaces"
         )}>
-          <Text bold fit caps textFont="primary" textColor="secondary">
+          <Text bold fit caps textFont="secondary" textColor="secondary">
             React
           </Text>
-          <Text fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             Approach
           </Text>
         </Slide>
@@ -424,10 +423,10 @@ export default class extends React.Component {
         )}>
           <Layout>
               <div style={{"flex-basis": "30%", paddingTop: 80, marginRight: 20}}>
-                <Text textFont="primary" textColor="secondary">
+                <Text textFont="secondary" textColor="secondary">
                   the
                 </Text>
-                <Text bold fit textFont="primary" textColor="secondary">
+                <Text bold fit textFont="secondary" textColor="secondary">
                   setup
                 </Text>
               </div>
@@ -452,11 +451,11 @@ export default class extends React.Component {
           "a set of tools for managing inline styles in react",
           "in other words, we dont have to write css anymore"
         )}>
-          <Text bold fit textFont="primary" textColor="paleRed">
+          <Text bold fit textFont="secondary" textColor="paleRed">
             Radium
           </Text>
           <Appear fid="1">
-            <Text textFont="primary" textColor="paleRed">
+            <Text textFont="secondary" textColor="paleRed">
               this machine kills CSS
             </Text>
           </Appear>
@@ -466,7 +465,7 @@ export default class extends React.Component {
           "and what we're left with is something really nice"
         )}>
           <Appear fid="1">
-            <Text bold fit textFont="primary" textColor="secondary">
+            <Text bold fit textFont="secondary" textColor="secondary">
               self-contained components
             </Text>
           </Appear>
@@ -486,7 +485,7 @@ export default class extends React.Component {
         <Slide transition={["fade"]} notes={notes(
           "there are a lot of benefits to writing components this way"
         )}>
-          <Heading fit size={3} textColor="secondary">
+          <Heading fit size={3} textFont="secondary" textColor="secondary">
             self-contained components
           </Heading>
           <List>
@@ -500,7 +499,7 @@ export default class extends React.Component {
           "this combination of React and Radium sounds pretty ideal for data viz",
           "I guess now we just need to drop in d3"
         )}>
-          <Text bold fit textFont="primary" textColor="secondary">
+          <Text bold fit textFont="secondary" textColor="secondary">
             ideal for data viz
           </Text>
           <Layout>
@@ -520,8 +519,8 @@ export default class extends React.Component {
           "this combination of React and Radium sounds pretty ideal for data viz",
           "I guess now we just need to drop in d3"
         )}>
-          <Text fit textFont="primary" textColor="secondary">
-            Let's add <em>d3</em>
+          <Text fit textFont="secondary" textColor="secondary">
+            Let’s add <em>d3</em>
           </Text>
           <Layout>
             <Appear fid="1"><BarChartDiagram label={"spec"}/></Appear>
@@ -544,7 +543,7 @@ export default class extends React.Component {
           "so just wrapping d3 in React was not a great solution",
           "because d3 and React have incompatible DOM models and methods for handling data"
         )}>
-          <Heading fit caps size={3} textColor="paleRed">
+          <Heading fit caps size={3} textFont="secondary" textColor="paleRed">
             nope
           </Heading>
           <List>
@@ -557,7 +556,7 @@ export default class extends React.Component {
           "but it didn't work...",
           "but that doesn't change the fact that this is still a great idea"
         )}>
-          <Text bold  caps fit textFont="primary" textColor="secondary">
+          <Text bold  caps fit textFont="secondary" textColor="secondary">
             This is a great idea
           </Text>
           <Layout>
@@ -576,16 +575,16 @@ export default class extends React.Component {
         <Slide transition={["fade"]} notes={notes(
           "so we thought"
         )}>
-          <Text style={{fontSize: 65}} textFont="primary" textColor="secondary">
+          <Text style={{fontSize: 65}} textFont="secondary" textColor="secondary">
             what if we use
           </Text>
-          <Text style={{fontSize: 200}} textFont="primary" textColor="secondary">
+          <Text style={{fontSize: 200}} textFont="secondary" textColor="secondary">
             React
           </Text>
-          <Text style={{fontSize: 200}} textFont="primary" textColor="paleRed">
+          <Text style={{fontSize: 200}} textFont="secondary" textColor="paleRed">
             Radium
           </Text>
-          <Text fit textFont="primary" textColor="secondary">
+          <Text fit textFont="secondary" textColor="secondary">
             and just a little bit of d3
           </Text>
         </Slide>
@@ -596,17 +595,17 @@ export default class extends React.Component {
           "We also needed to avoid data mutation",
           "And we weren't really excited about keeping the api"
         )}>
-          <Text fit textFont="primary" textColor="paleRed">
+          <Text fit textFont="secondary" textColor="paleRed">
             just a little bit of d3
           </Text>
           <Appear>
-            <Text bold fit textFont="primary" textColor="secondary"
+            <Text bold fit textFont="secondary" textColor="secondary"
               style={{textDecoration: "line-through", padding: 2}}>
               DOM Manipulation
             </Text>
           </Appear>
           <Appear>
-            <Text bold fit textFont="primary" textColor="secondary"
+            <Text bold fit textFont="secondary" textColor="secondary"
               style={{textDecoration: "line-through", padding: 2}}>
               Data Mutation
             </Text>
@@ -622,10 +621,10 @@ export default class extends React.Component {
         <Slide transition={["none"]} notes={notes(
           "And all we're left with is some math",
         )}>
-          <Text fit textFont="primary" textColor="paleRed">
+          <Text fit textFont="secondary" textColor="paleRed">
             just a little bit of d3
           </Text>
-          <Text bold fit textFont="primary" textColor="secondary">
+          <Text bold fit textFont="secondary" textColor="secondary">
             {"Math"}
           </Text>
         </Slide>
@@ -633,16 +632,16 @@ export default class extends React.Component {
         <Slide notes={notes(
           "so now the question becomes"
         )}>
-          <Text style={{fontSize: 65}} textFont="primary" textColor="secondary">
+          <Text style={{fontSize: 65}} textFont="secondary" textColor="secondary">
             what can we build with
           </Text>
-          <Text style={{fontSize: 180}} textFont="primary" textColor="secondary">
+          <Text style={{fontSize: 180}} textFont="secondary" textColor="secondary">
             React
           </Text>
-          <Text style={{fontSize: 180}} textFont="primary" textColor="paleRed">
+          <Text style={{fontSize: 180}} textFont="secondary" textColor="paleRed">
             Radium
           </Text>
-          <Text fit textFont="primary" textColor="secondary">
+          <Text fit textFont="secondary" textColor="secondary">
             and math
           </Text>
         </Slide>
@@ -650,10 +649,10 @@ export default class extends React.Component {
         <Slide notes={notes(
           "well, you could probably make anything"
         )}>
-          <Text fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             probably
           </Text>
-          <Text fit caps textFont="primary" textColor="secondary">
+          <Text fit caps textFont="secondary" textColor="secondary">
             anything
           </Text>
         </Slide>
@@ -661,17 +660,13 @@ export default class extends React.Component {
         <Slide notes={notes(
           "but we had something a little more specific in mind"
         )}>
-          <Text fit textFont="primary" textColor="secondary">
-            anything
-          </Text>
+
         </Slide>
 
         <Slide id="victory" transition={["fade"]} notes={notes(
           "so we decided to build victory"
         )}>
-          <Text fit textFont="serif" textColor="secondary">
-            Victory
-          </Text>
+          <Image width="100%" src={images.victoryLogo}/>
         </Slide>
 
         <Slide id="victory-example" transition={["fade"]} notes={notes(

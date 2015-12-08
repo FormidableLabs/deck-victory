@@ -1,3 +1,6 @@
 <VictoryChart>
-  <VictoryBar/>
+  <VictoryBar style={{
+      data: {fill: "red"}
+    }}
+  />
 </VictoryChart>
