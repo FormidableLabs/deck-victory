@@ -1,4 +1,4 @@
-<VictoryChart domain={{x:[-1, 1]}}>
+<VictoryChart>
   <VictoryAxis
     style={{
       tickLabels: {fill: "none"},
@@ -9,5 +9,13 @@
     style={{
       data: {stroke: "#bd4139"}
     }}
+  />
+  <VictoryBar
+    data={[
+      {x: -0.75, y: -0.75},
+      {x: -0.25, y: -0.25},
+      {x: 0.25, y: 0.25},
+      {x: 0.75, y: 0.75}
+    ]}
   />
 </VictoryChart>

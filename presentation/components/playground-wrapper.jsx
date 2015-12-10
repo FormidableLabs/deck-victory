@@ -1,15 +1,23 @@
 import React from "react";
 import Radium from "radium";
 import Playground from "component-playground";
-import * as V from "victory";
-import {
-  VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryScatter, VictoryPie
-} from "victory"
+import {VictoryChart} from "victory-chart";
+import {VictoryAxis} from "victory-axis";
+import {VictoryLine} from "victory-line";
+import {VictoryBar} from "victory-bar";
+import {VictoryScatter} from "victory-scatter";
+import {VictoryPie} from "victory-pie";
+
 
 @Radium
 export default class PlaygroundWrapper extends React.Component {
   static propTypes = {
-    codeText: React.PropTypes.string
+    codeText: React.PropTypes.string,
+    noRender: React.PropTypes.bool
+  }
+
+  static defaultProps = {
+    noRender: true
   }
 
   getMainStyles() {
@@ -29,9 +37,9 @@ export default class PlaygroundWrapper extends React.Component {
         <Playground
           codeText={this.props.codeText}
           scope={{
-            React, VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryScatter, VictoryPie, V
+            React, VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryScatter, VictoryPie
           }}
-          noRender={true}
+          noRender={this.props.noRender}
           theme="elegant"
         />
       </div>

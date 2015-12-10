@@ -21,7 +21,7 @@ export default class ContainerDiagram extends React.Component {
   };
 
   static defaultProps = {
-    label: "chart"
+    label: ""
   };
 
   render() {

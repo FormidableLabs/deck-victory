@@ -29,10 +29,10 @@ export default class ContainerDiagram extends React.Component {
       <div>
         <h1 style={labelStyle}>{this.props.label}</h1>
         <svg style={containerStyle}>
-          <text x="40" y="50" fill="#bd4139" fontSize="50">NOPE</text>
-          <text x="40" y="100" fill="#bd4139" fontSize="50">NOPE</text>
-          <text x="40" y="150" fill="#bd4139" fontSize="50">NOPE</text>
-          <text x="40" y="200" fill="#bd4139" fontSize="50">NOPE</text>
+          <text x="50" y="50" fill="#bd4139" fontSize="50">NOPE</text>
+          <text x="50" y="100" fill="#bd4139" fontSize="50">NOPE</text>
+          <text x="50" y="150" fill="#bd4139" fontSize="50">NOPE</text>
+          <text x="50" y="200" fill="#bd4139" fontSize="50">NOPE</text>
         </svg>
       </div>
     );

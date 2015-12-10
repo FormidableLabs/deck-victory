@@ -1,7 +1,7 @@
 import React from "react";
 import Radium from "radium";
 import _ from "lodash";
-import {VictoryPie} from "victory"
+import {VictoryPie} from "victory-pie"
 
 const containerStyle = {
   background: "#ebe3db",

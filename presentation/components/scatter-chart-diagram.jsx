@@ -1,7 +1,9 @@
 import React from "react";
 import Radium from "radium";
 import _ from "lodash";
-import {VictoryScatter, VictoryAxis, VictoryChart} from "victory"
+import {VictoryChart} from "victory-chart";
+import {VictoryAxis} from "victory-axis";
+import {VictoryScatter} from "victory-scatter";
 
 const containerStyle = {
   background: "#ebe3db",

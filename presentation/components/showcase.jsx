@@ -1,8 +1,12 @@
 import React from "react";
 import Radium from "radium";
-import {
-  VictoryChart, VictoryBar, VictoryAxis, VictoryLine, VictoryScatter, VictoryPie
-} from "victory"
+import {VictoryChart} from "victory-chart";
+import {VictoryAxis} from "victory-axis";
+import {VictoryLine} from "victory-line";
+import {VictoryBar} from "victory-bar";
+import {VictoryScatter} from "victory-scatter";
+import {VictoryPie} from "victory-pie";
+
 
 @Radium
 export default class Showcase extends React.Component {
@@ -37,7 +41,7 @@ export default class Showcase extends React.Component {
       return (
         <VictoryChart
           animate={{velocity: 0.02}}
-          height={600}
+          height={500}
           width={900}
           padding={75}
           domain={{x: [0.5, 5.5]}}

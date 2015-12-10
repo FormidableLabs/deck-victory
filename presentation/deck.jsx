@@ -10,10 +10,12 @@ import {
 } from "spectacle/src/spectacle";
 
 // victory components
-import * as V from "victory";
-import {
-  VictoryChart, VictoryBar, VictoryAxis, VictortLine, VictoryScatter, VictoryPie
-} from "victory"
+import {VictoryChart} from "victory-chart";
+import {VictoryAxis} from "victory-axis";
+import {VictoryLine} from "victory-line";
+import {VictoryBar} from "victory-bar";
+import {VictoryScatter} from "victory-scatter";
+import {VictoryPie} from "victory-pie";
 
 // diagram components
 
@@ -28,10 +30,13 @@ import ScatterChartDiagram from "./components/scatter-chart-diagram";
 import PieChartDiagram from "./components/pie-chart-diagram";
 import PlaygroundWrapper from "./components/playground-wrapper";
 import Showcase from "./components/showcase";
+import Animation from "./components/animation";
+import TripleAxis from "./components/triple-axis";
 //examples
 const examples = {
   chart1: require("!raw!!./examples/victory-chart-1"),
-  sensibleDefaults: require("!raw!!./examples/sensible-defaults")
+  sensibleDefaults: require("!raw!!./examples/sensible-defaults"),
+  animation: require("!raw!!./examples/animation")
 };
 
 // Images
@@ -183,10 +188,10 @@ export default class extends React.Component {
           "So we figured out how to build custom dashboards",
           "and at first it went something like this..."
         )}>
-          <Text bold fit caps textFont="secondary" textColor="secondary">
+          <Text bold fit textFont="secondary" textColor="secondary">
             The standard
           </Text>
-          <Text bold fit caps textFont="secondary" textColor="secondary">
+          <Text bold fit textFont="secondary" textColor="secondary">
             approach
           </Text>
         </Slide>
@@ -389,18 +394,40 @@ export default class extends React.Component {
         </Slide>
 
         <Slide transition={["fade"]} notes={notes(
-          "so overall the we've found the standard approach our standard approach had",
+          "so overall the we've found the our standard approach had",
           "some room for improvement"
         )}>
           <Heading fit textFont="secondary" size={3} textColor="secondary">
             Developer Experience
           </Heading>
           <List>
-            <ListItem><Appear fid="1">Steep learning curve</Appear></ListItem>
+            <ListItem><Appear fid="1">Inflexible</Appear></ListItem>
             <ListItem><Appear fid="2">Lots of context switching</Appear></ListItem>
             <ListItem><Appear fid="3">Time consuming</Appear></ListItem>
-            <ListItem><Appear fid="4">Still kind of fun</Appear></ListItem>
+            <ListItem><Appear fid="4">Error prone</Appear></ListItem>
           </List>
+        </Slide>
+
+        <Slide transition={["fade"]} notes={notes(
+          "So we thought we could do better",
+          "what if we broke our code into small reusable components",
+          "put them together like legos",
+          "could do that with ordinary JS, but it would be hard"
+        )}>
+          <Text fit textFont="secondary" textColor="secondary">
+            We can do better
+          </Text>
+          <Layout>
+            <BarChartDiagram highlightAxes highlightColor={"transparent"}/>
+              <Heading size={3} textColor="secondary">
+                <i className="fa fa-plus" style={{paddingTop: 75}}/>
+              </Heading>
+            <BarChartDiagram highlightBars highlightColor={"transparent"}/>
+            <Heading size={3} textColor="secondary">
+              <i className="fa fa-arrow-right" style={{paddingTop: 75}}/>
+            </Heading>
+            <BarChartDiagram/>
+          </Layout>
         </Slide>
 
         {/* ---------------------------------------------------------------
@@ -408,36 +435,18 @@ export default class extends React.Component {
           * --------------------------------------------------------------- */}
 
         <Slide transition={["none"]} notes={notes(
-          "...and then about a year ago"
+          "Luckily there's a tool that makes it very easy",
+          "so let's see how our imaginary project would go in React"
         )}>
-          <Text textFont="secondary" textColor="secondary">
-            then all of a sudden...
-          </Text>
-          <Text bold fit caps textFont="secondary" textColor="secondary">
-            everyone
-          </Text>
-          <Text fit caps textFont="secondary" textColor="secondary">
-            decided to use
-          </Text>
-          <Text fit caps textFont="secondary" textColor="secondary">
-            react
-          </Text>
-        </Slide>
-
-        <Slide transition={["none"]} notes={notes(
-          "...and we really started think about how we were writing interfaces"
-        )}>
-          <Text bold fit caps textFont="secondary" textColor="secondary">
+          <Text bold fit textFont="secondary" textColor="secondary">
             React
-          </Text>
-          <Text fit caps textFont="secondary" textColor="secondary">
-            Approach
           </Text>
         </Slide>
 
         <Slide transition={["fade"]} notes={notes(
-          "by using jsx we immediately got to eliminate one of the pieces of the puzzle",
-          "and we thought, we can take this one step further..."
+          "get a spec, and start writing our first component",
+          ".jsx is pretty cool, now we dont have to worry about html templates",
+          "but we still have to deal with css, still have context switching"
         )}>
           <Layout>
               <div style={{"flex-basis": "30%", paddingTop: 80, marginRight: 20}}>
@@ -451,16 +460,14 @@ export default class extends React.Component {
             <BarChartDiagram label={"spec"}/>
           </Layout>
           <Layout>
-            <Appear fid="1">
-            <Layout>
-              <JsDiagram label=".jsx"/>
-              <CssDiagram/>
+            <Appear fid="1"><JsDiagram label=".jsx"/></Appear>
+            <Appear fid="2"><CssDiagram/></Appear>
+            <Appear fid="3">
               <Heading size={3} textColor="secondary">
                 <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
               </Heading>
-              <ContainerDiagram label={"result"}/>
-            </Layout>
             </Appear>
+            <Appear fid="4"><ContainerDiagram label={"result"}/></Appear>
           </Layout>
         </Slide>
 
@@ -507,14 +514,16 @@ export default class extends React.Component {
             self-contained components
           </Heading>
           <List>
-            <ListItem><Appear fid="1">Modular</Appear></ListItem>
-            <ListItem><Appear fid="2">Composable</Appear></ListItem>
-            <ListItem><Appear fid="3">Logic <em>with</em> visual representation</Appear></ListItem>
+            <ListItem><Appear fid="1">No context switching</Appear></ListItem>
+            <ListItem><Appear fid="2">Easy to compose and reuse</Appear></ListItem>
+            <ListItem><Appear fid="3">Logic and style are tightly coupled</Appear></ListItem>
           </List>
         </Slide>
 
         <Slide transition={["fade"]} notes={notes(
-          "this combination of React and Radium sounds pretty ideal for data viz",
+          "ideal for data viz an especially dashboards",
+          "composable parts styled completely independently, dont worry about style context",
+          "shouldn't logic and style be together? Isnt that what data viz is?",
           "I guess now we just need to drop in d3"
         )}>
           <Text bold fit textFont="secondary" textColor="secondary">
@@ -534,8 +543,8 @@ export default class extends React.Component {
         </Slide>
 
         <Slide transition={["fade"]} notes={notes(
-          "this combination of React and Radium sounds pretty ideal for data viz",
-          "I guess now we just need to drop in d3"
+          "So what happens if we take our d3 visualizations",
+          "and port them to React?"
         )}>
           <Text fit textFont="secondary" textColor="secondary">
             Let’s add <em>d3</em>
@@ -558,7 +567,7 @@ export default class extends React.Component {
         </Slide>
 
         <Slide transition={["fade"]} notes={notes(
-          "so just wrapping d3 in React was not a great solution",
+          "unfortunately you can't just wrap d3 in react",
           "because d3 and React have incompatible DOM models and methods for handling data"
         )}>
           <Heading fit caps size={3} textFont="secondary" textColor="paleRed">
@@ -611,7 +620,7 @@ export default class extends React.Component {
           "what do I mean by just a little bit of d3",
           "Well we couldn't use any of the pieces that interacted with the DOM",
           "We also needed to avoid data mutation",
-          "And we weren't really excited about keeping the api"
+          "And to be honest, some parts we just didn't care for"
         )}>
           <Text fit textFont="secondary" textColor="paleRed">
             just a little bit of d3
@@ -717,8 +726,22 @@ export default class extends React.Component {
         <Slide transition={["none"]} notes={notes(
             "opinions"
         )}>
+          <Text fit textFont="secondary" textColor="secondary">
+            opinions
+          </Text>
+          <Text textFont="secondary" textColor="secondary" style={{fontSize: 150}}>
+            &
+          </Text>
+          <Text fit textFont="secondary" textColor="secondary">
+            infrastructure
+          </Text>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+            "opinions"
+        )}>
           <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
-          Data viz should be
+            Data viz should be
           </Text>
           <Layout>
             <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
@@ -756,10 +779,18 @@ export default class extends React.Component {
               reusable
             </Text>
           </Layout>
+          <Layout>
+            <Text textFont="tertiary" textColor="secondary" style={{fontSize: 55}}>
+              {"<VictoryPie/>"}
+            </Text>
+            <VictoryPie/>
+          </Layout>
         </Slide>
 
         <Slide transition={["fade"]} notes={notes(
-            "opinions"
+            "easy",
+            "goal, beginners should be able to get started fast",
+            "people with no JS experience should be able to style and change existing components"
         )}>
             <Text textFont="secondary" textColor="secondary" style={{fontSize: 110, paddingBottom: 50}}>
               clear API
@@ -773,18 +804,15 @@ export default class extends React.Component {
         </Slide>
 
         <Slide transition={["none"]} notes={notes(
-          "sensible default data",
-          "doesn't get easier"
-        )}>
-          <PlaygroundWrapper codeText={"<VictoryPie/>"}/>
-        </Slide>
-
-        <Slide transition={["none"]} notes={notes(
           "add your own data",
           "style syntax",
           "lets use brand colors",
           "change color"
         )}>
+          <Text textFont="secondary" textColor="secondary"
+            style={{margin: "0.05rem, auto", fontSize: 55}}>
+            VictoryPie
+          </Text>
           <PlaygroundWrapper codeText={
             "<VictoryPie\n" +
             "  data={[\n" +
@@ -814,6 +842,10 @@ export default class extends React.Component {
           "all pretty obvious to use",
           "makes it easy to play, and decide how the data looks best"
         )}>
+          <Text textFont="secondary" textColor="secondary"
+            style={{margin: "0.05rem, auto", fontSize: 55}}>
+            VictoryPie
+          </Text>
           <PlaygroundWrapper codeText={
             "<VictoryPie\n" +
             "  innerRadius={100}\n" +
@@ -844,6 +876,7 @@ export default class extends React.Component {
               reusable
             </Text>
           </Layout>
+          <TripleAxis/>
         </Slide>
 
         <Slide transition={["none"]} notes={notes(
@@ -851,17 +884,84 @@ export default class extends React.Component {
           "more sensible defaults",
           "this is actually a composed example"
         )}>
+          <Text textFont="secondary" textColor="secondary"
+            style={{margin: "0.05rem, auto", fontSize: 55}}>
+            VictoryChart
+          </Text>
           <PlaygroundWrapper codeText={"<VictoryChart/>"}/>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+          "with the sensible default children"
+        )}>
+          <Text textFont="secondary" textColor="secondary"
+            style={{margin: "0.05rem, auto", fontSize: 55}}>
+            VictoryChart
+          </Text>
+          <PlaygroundWrapper codeText={
+            "<VictoryChart>\n" +
+            "  <VictoryAxis/>\n" +
+            "  <VictoryAxis dependentAxis/>\n" +
+            "  <VictoryLine\n" +
+            "    y={(x) => x}\n" +
+            "  />\n" +
+            "</VictoryChart>"
+          }/>
+        </Slide>
+
+        <Slide transition={["none"]} notes={notes(
+          "VictoryChart is a composition helper",
+          "It doesn't render any of it's own elements",
+          "It just coordinates the bevavior of its children"
+        )}>
+          <Text textFont="secondary" textColor="secondary"
+            style={{margin: "0.05rem, auto", fontSize: 55}}>
+            VictoryChart
+          </Text>
+          <PlaygroundWrapper codeText={
+            "<VictoryChart>\n" +
+            "  <VictoryLine\n" +
+            "    y={(x) => Math.sin(2 * Math.PI * x)}\n" +
+            "  />\n" +
+            "</VictoryChart>"
+          }/>
         </Slide>
 
 
         <Slide transition={["fade"]} notes={notes(
-          "so in summary"
+          "composing charts of different types",
+          "domain is automatically set"
         )}>
+          <Text textFont="secondary" textColor="secondary"
+            style={{margin: "0.05rem, auto", fontSize: 55}}>
+            VictoryChart
+          </Text>
           <PlaygroundWrapper codeText={examples.chart1}/>
         </Slide>
 
 
+        <Slide transition={["none"]} notes={notes(
+            "opinions"
+        )}>
+          <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
+          Data viz should be
+          </Text>
+          <Layout>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              easy
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              composable
+            </Text>
+            <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
+              powerful
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+              reusable
+            </Text>
+          </Layout>
+          <Showcase/>
+        </Slide>
 
       </CustomDeck>
     );

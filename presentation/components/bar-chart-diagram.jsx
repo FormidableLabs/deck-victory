@@ -1,7 +1,9 @@
 import React from "react";
 import Radium from "radium";
 import _ from "lodash";
-import {VictoryBar, VictoryAxis, VictoryChart} from "victory"
+import {VictoryChart} from "victory-chart";
+import {VictoryAxis} from "victory-axis";
+import {VictoryBar} from "victory-bar";
 
 const containerStyle = {
   background: "#ebe3db",
@@ -54,7 +56,13 @@ export default class BarChartDiagram extends React.Component {
   constructor(props) {
       super(props);
       this.state = {
-        data: this.getData(),
+        data: [
+          {x: 1, y: 3},
+          {x: 2, y: 1},
+          {x: 3, y: 4},
+          {x: 4, y: 5},
+          {x: 5, y: 2}
+        ]
       };
     }
 
@@ -62,7 +70,7 @@ export default class BarChartDiagram extends React.Component {
       if (this.props.animate) {
         setInterval(() => {
           this.setState({
-            data: this.getData(),
+            data: this.getData()
           });
         }, 2000);
       }

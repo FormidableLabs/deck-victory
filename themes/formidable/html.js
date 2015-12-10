@@ -18,7 +18,7 @@ module.exports = function (data) {
           "<link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css\">",
           "<link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.css\"/>",
           "<link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/theme/elegant.min.css\"/>",
-          "<link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/theme/midnight.min.css\"/>",
+          "<link rel=\"stylesheet\" href=\"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/theme/monokai.min.css\"/>",
         "</head>",
         "<body>",
           "<script type=\"text/javascript\" src=\"//cdnjs.cloudflare.com/ajax/libs/codemirror/5.0.0/codemirror.min.js\"></script>",
