@@ -1,16 +1,12 @@
-# Spectacle Boilerplate
+Presentation materials for VictoryJS
+=====================================
+## Abstract
 
-## Reference
-
-The Spectacle core API is available at [https://github.com/FormidableLabs/spectacle/blob/master/README.markdown](https://github.com/FormidableLabs/spectacle/blob/master/README.markdown).
+Victory is a small and growing ecosystem of data-viz components written for React. The modular, componentized nature of React has allowed us to write fully-contained, reusable data-viz elements that are responsible for their own styles and behaviors. The use of sensible default props makes getting started very easy, without sacrificing flexibility. Victory also leverages React lifecycle methods and DOM diffing to create a lightweight animation wrapper. When combined, these features result in a set of components that are easy to use, and compose into more complicated visualizations.
 
 ## Development
 
-After downloading the boilerplate, your first order of business is to open terminal and run `npm install`
-
-Next run `rm -R .git` to remove the existing version control.
-
-Then, to start up the local server, run `npm start`
+To start up the local server, run `npm start`
 
 Open a browser and hit [http://localhost:3000](http://localhost:3000), and we are ready to roll
 

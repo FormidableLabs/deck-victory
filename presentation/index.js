@@ -804,7 +804,8 @@ export default class Presentation extends React.Component {
               </Text>
             </Layout>
             <Layout>
-              <Text textFont="tertiary" textColor="secondary" style={{fontSize: 55}}>
+              <Text textFont="tertiary" textColor="secondary"
+                style={{marginTop: "150px", fontSize: 60}}>
                 {"<VictoryPie/>"}
               </Text>
               <VictoryPie/>
