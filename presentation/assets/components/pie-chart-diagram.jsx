@@ -6,8 +6,8 @@ import {VictoryPie} from "victory-pie"
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #b5aca3",
-  width: "14em",
-  height: "14em",
+  width: "225px",
+  height: "225px",
   margin: "0 10 10 10"
 };
 
@@ -26,6 +26,7 @@ const pieColors = ["#4d4945", "#d1c7bc", "#b5aca3", "#91887e", "#67615c"];
 const labelStyle = {
   color: "#1b2633",
   fontSize: 24,
+  fontFamily: "sans-serif"
 };
 
 @Radium
@@ -44,17 +45,23 @@ export default class PieChartDiagram extends React.Component {
       super(props);
       this.state = {
         data: this.getData(),
+        animate: null
       };
     }
 
   componentDidMount() {
     if (this.props.animate) {
+      this.setState({animate: {velocity: 0.01}});
       setInterval(() => {
         this.setState({
-          data: this.getData(),
+          data: this.getData()
         });
       }, 2000);
     }
+  }
+
+  componentWillUnmount() {
+    this.setState({animate: null});
   }
 
   getData() {
@@ -81,7 +88,7 @@ export default class PieChartDiagram extends React.Component {
             }}
             innerRadius={35}
             padAngle={2}
-            animate={{velocity: 0.01}}
+            animate={this.state.animate}
             data={this.state.data}
             sliceColors={pieColors}
             style={pieStyle}

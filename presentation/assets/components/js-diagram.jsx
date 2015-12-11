@@ -21,6 +21,7 @@ const rectStyle = {
 const labelStyle = {
   color: "#1b2633",
   fontSize: 24,
+  fontFamily: "sans-serif"
 };
 
 @Radium
@@ -44,10 +45,10 @@ export default class JsDiagram extends React.Component {
     return _.map(rectArray, (index) => {
       style = _.contains(this.props.highlights, index) ?
         _.merge({}, rectStyle, {fill: this.props.highlightColor}) : rectStyle;
-      indent = ((index + 1) % 4 === 0 || (index + 1) % 4 === 1) ? "2em" : "3em";
-      spacing = 1.25 * index + Math.floor(index / 4);
+      indent = ((index + 1) % 4 === 0 || (index + 1) % 4 === 1) ? "30px" : "45px";
+      spacing = 20 * (index + 1) + Math.floor(index / 4) * 15;
       return (
-        <rect key={index} style={style} y={`${spacing + 1}em`} x={indent}/>
+        <rect key={index} style={style} y={`${spacing}px`} x={indent}/>
       );
     });
   }

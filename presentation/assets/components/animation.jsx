@@ -7,8 +7,10 @@ import {VictoryLine} from "victory-line";
 export default class Animation extends React.Component {
    constructor(props) {
     super(props);
-    this.state = { data: this.getData(),
-      style: this.getStyles()
+    this.state = {
+      data: this.getData(),
+      style: this.getStyles(),
+      animate: null
     };
   }
 
@@ -27,6 +29,7 @@ export default class Animation extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({animate: {velocity: 0.02} })
     setInterval(() => {
       this.setState({
         data: this.getData(),
@@ -35,10 +38,14 @@ export default class Animation extends React.Component {
     }, 3000);
   }
 
+  componentWillUnmount() {
+    this.setState({animate: null});
+  }
+
   render() {
     return (
       <VictoryChart
-        animate={{velocity: 0.02}}>
+        animate={this.state.animate}>
         <VictoryLine
           data={this.state.data}
           style={{data: this.state.style}}/>

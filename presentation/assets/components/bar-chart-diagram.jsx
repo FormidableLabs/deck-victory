@@ -8,8 +8,8 @@ import {VictoryBar} from "victory-bar";
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #b5aca3",
-  width: "14em",
-  height: "14em",
+  width: "225px",
+  height: "225px",
   margin: "0 10 10 10"
 };
 
@@ -33,6 +33,7 @@ const barStyle = {
 const labelStyle = {
   color: "#1b2633",
   fontSize: 24,
+  fontFamily: "sans-serif"
 };
 
 @Radium
@@ -54,37 +55,43 @@ export default class BarChartDiagram extends React.Component {
   };
 
   constructor(props) {
-      super(props);
-      this.state = {
-        data: [
-          {x: 1, y: 3},
-          {x: 2, y: 1},
-          {x: 3, y: 4},
-          {x: 4, y: 5},
-          {x: 5, y: 2}
-        ]
-      };
-    }
+    super(props);
+    this.state = {
+      data: [
+        {x: 1, y: 3},
+        {x: 2, y: 1},
+        {x: 3, y: 4},
+        {x: 4, y: 5},
+        {x: 5, y: 2}
+      ],
+      animate: null
+    };
+  }
 
-    componentDidMount() {
-      if (this.props.animate) {
-        setInterval(() => {
-          this.setState({
-            data: this.getData()
-          });
-        }, 2000);
-      }
+  componentDidMount() {
+    if (this.props.animate) {
+      this.setState({animate: {velocity: 0.01}});
+      setInterval(() => {
+        this.setState({
+          data: this.getData()
+        });
+      }, 2000);
     }
+  }
 
-    getData() {
-      return [
-        {x: 1, y: _.random(1, 5)},
-        {x: 2, y: _.random(1, 5)},
-        {x: 3, y: _.random(1, 5)},
-        {x: 4, y: _.random(1, 5)},
-        {x: 5, y: _.random(1, 5)}
-      ];
-    }
+  componentWillUnmount() {
+    this.setState({animate: null});
+  }
+
+  getData() {
+    return [
+      {x: 1, y: _.random(1, 5)},
+      {x: 2, y: _.random(1, 5)},
+      {x: 3, y: _.random(1, 5)},
+      {x: 4, y: _.random(1, 5)},
+      {x: 5, y: _.random(1, 5)}
+    ];
+  }
 
   getAxisStyle() {
     return this.props.highlightAxes ?
@@ -106,7 +113,7 @@ export default class BarChartDiagram extends React.Component {
           <VictoryChart width={225} height={225} padding={35}
             standalone={false} domain={{x: [0, 5.8], y: [0, 5]}}
           >
-            <VictoryBar animate={{velocity: 0.01}} style={this.getBarStyle()} data={this.state.data}/>
+            <VictoryBar animate={this.state.animate} style={this.getBarStyle()} data={this.state.data}/>
             <VictoryAxis style={this.getAxisStyle()}/>
             <VictoryAxis dependentAxis style={this.getAxisStyle()}/>
           </VictoryChart>

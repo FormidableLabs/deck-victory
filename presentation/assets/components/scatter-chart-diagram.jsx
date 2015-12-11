@@ -8,8 +8,8 @@ import {VictoryScatter} from "victory-scatter";
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #b5aca3",
-  width: "14em",
-  height: "14em",
+  width: "225px",
+  height: "225px",
   margin: "0 10 10 10"
 };
 
@@ -33,6 +33,7 @@ const scatterStyle = {
 const labelStyle = {
   color: "#1b2633",
   fontSize: 24,
+  fontFamily: "sans-serif"
 };
 
 @Radium
@@ -48,20 +49,26 @@ export default class LineChartDiagram extends React.Component {
   };
 
   constructor(props) {
-      super(props);
-      this.state = {
-        data: this.getData(),
-      };
-    }
+    super(props);
+    this.state = {
+      data: this.getData(),
+      animate: null
+    };
+  }
 
   componentDidMount() {
     if (this.props.animate) {
+      this.setState({animate: {velocity: 0.01}});
       setInterval(() => {
         this.setState({
-          data: this.getData(),
+          data: this.getData()
         });
       }, 2000);
     }
+  }
+
+  componentWillUnmount() {
+    this.setState({animate: null});
   }
 
   getData() {
@@ -84,7 +91,7 @@ export default class LineChartDiagram extends React.Component {
             standalone={false} domain={{x: [0, 5.5], y: [0, 23]}}
           >
             <VictoryScatter
-              animate={{velocity: 0.01}}
+              animate={this.state.animate}
               style={scatterStyle}
               data={this.state.data}
               size={5}

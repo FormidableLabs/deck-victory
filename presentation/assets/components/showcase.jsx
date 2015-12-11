@@ -14,6 +14,7 @@ export default class Showcase extends React.Component {
       super(props);
       this.state = {
         data: this.getData(),
+        animate: null
       };
     }
 
@@ -30,6 +31,7 @@ export default class Showcase extends React.Component {
     }
 
     componentDidMount() {
+      this.setState({animate: {velocity: 0.02}});
       setInterval(() => {
         this.setState({
           data: this.getData(),
@@ -37,10 +39,14 @@ export default class Showcase extends React.Component {
       }, 3000);
     }
 
+    componentWillUnmount() {
+      this.setState({animate: null});
+    }
+
     render() {
       return (
         <VictoryChart
-          animate={{velocity: 0.02}}
+          animate={this.state.animate}
           height={500}
           width={900}
           padding={75}

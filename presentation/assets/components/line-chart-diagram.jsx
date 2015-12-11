@@ -8,8 +8,8 @@ import {VictoryLine} from "victory-line";
 const containerStyle = {
   background: "#ebe3db",
   border: "3px solid #b5aca3",
-  width: "14em",
-  height: "14em",
+  width: "225px",
+  height: "225px",
   margin: "0 10 10 10"
 };
 
@@ -33,6 +33,7 @@ const lineStyle = {
 const labelStyle = {
   color: "#1b2633",
   fontSize: 24,
+  fontFamily: "sans-serif"
 };
 
 @Radium
@@ -65,18 +66,24 @@ export default class LineChartDiagram extends React.Component {
           {x: 5, y: 3},
           {x: 6, y: 2},
           {x: 7, y: 5}
-        ]
+        ],
+        animate: null
       };
     }
 
     componentDidMount() {
       if (this.props.animate) {
+        this.setState({animate: {velocity: 0.01}});
         setInterval(() => {
           this.setState({
             data: this.getData()
           });
         }, 2000);
       }
+    }
+
+    componentWillUnmount() {
+      this.setState({animate: null});
     }
 
     getData() {
@@ -113,7 +120,7 @@ export default class LineChartDiagram extends React.Component {
             standalone={false} domain={{x: [0, 7], y: [0, 5]}}
           >
             <VictoryLine
-              animate={{velocity: 0.01}}
+              animate={this.state.animate}
               style={this.getLineStyle()}
               data={this.state.data}
               interpolation="basis"

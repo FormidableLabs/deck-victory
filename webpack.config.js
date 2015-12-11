@@ -1,50 +1,67 @@
-"use strict";
+/* eslint-disable */
 
-var path = require("path");
-var getConfig = require("hjs-webpack");
-var html = require("./themes/formidable/html");
+var path = require('path');
+var webpack = require('webpack');
 
-var webpackConfig = module.exports = getConfig({
-  in: "./index.jsx",
-  out: "dist",
-  clearBeforeBuild: true,
-  html: html
-});
-
-// Source maps mess up CSS in dev and the `data.css` thing is generally borked.
-//
-// See: https://github.com/FormidableLabs/spectacle/issues/50
-webpackConfig.devtool = "source-map";
-
-// Hack the JS loader at known zeroeth slot.
-webpackConfig.module.loaders[0] = {
-  test: /\.jsx?$/,
-  include: [
-    path.join(__dirname, "index.jsx"),
-    path.join(__dirname, "presentation"),
-    path.join(__dirname, "themes"),
-
-    // Have to build spectacle as well.
-    path.join(__dirname, "node_modules/spectacle/presentation"),
-    path.join(__dirname, "node_modules/spectacle/src"),
-    path.join(__dirname, "node_modules/spectacle/themes")
+module.exports = {
+  devtool: 'source-map',
+  entry: [
+    'webpack-hot-middleware/client',
+    './index'
   ],
-  loaders: [
-    "babel-loader?stage=1"
-  ]
-};
-
-// Remove hot loader unless _actually_ hot.
-if (process.env.WEBPACK_ENV === "hot") {
-  webpackConfig.module.loaders[0].loaders.unshift("react-hot");
-} else {
-  webpackConfig.entry = webpackConfig.entry.filter(function (entry) {
-    return !/^webpack\/hot\//.test(entry) &&
-           !/^webpack-dev-server\/client/.test(entry);
-  });
-
-  // Only available with NPM devDependencies.
-  if (webpackConfig.devServer) {
-    webpackConfig.devServer.hot = false;
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename: 'bundle.js',
+    publicPath: '/dist/'
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoErrorsPlugin()
+  ],
+  stats: {
+    colors: true,
+    reasons: true
+  },
+  resolve: {
+    extensions: ["", ".js", ".jsx"]
+  },
+  module: {
+    loaders: [{
+      test: /\.(js|jsx)$/,
+      loader: 'babel',
+      query: {
+        plugins: ['react-transform'],
+        extra: {
+          'react-transform': {
+            transforms: [{
+              transform: 'react-transform-hmr',
+              imports: ['react'],
+              locals: ['module']
+            }, {
+              transform: 'react-transform-catch-errors',
+              imports: ['react', 'redbox-react']
+            }]
+          }
+        }
+      },
+      exclude: /node_modules/,
+      include: __dirname
+    }, {
+      test: /\.css$/,
+      loaders: ['style', 'raw'],
+      include: __dirname
+    }, {
+      test: /\.svg$/,
+      loader: 'url?limit=10000&mimetype=image/svg+xml',
+      include: path.join(__dirname, 'presentation/assets/img')
+    }, {
+      test: /\.png$/,
+      loader: 'url-loader?mimetype=image/png',
+      include: path.join(__dirname, 'presentation/assets/img')
+    }, {
+      test: /\.jpg$/,
+      loader: 'url-loader?mimetype=image/jpg',
+      include: path.join(__dirname, 'presentation/assets/img')
+    }]
   }
-}
+};
