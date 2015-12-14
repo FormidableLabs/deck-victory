@@ -20,7 +20,7 @@
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "spectacle": "^1.0.0",
-    "victory-axis": "1.5.4",
+    "victory-axis": "git+https://github.com/FormidableLabs/victory-axis#4d10fea",
     "victory-bar": "2.4.7",
     "victory-chart": "2.0.4",
     "victory-line": "0.5.6",

@@ -40,7 +40,11 @@ import TripleAxis from "./assets/components/triple-axis";
 const examples = {
   chart1: require("!raw!!./assets/examples/victory-chart-1"),
   sensibleDefaults: require("!raw!!./assets/examples/sensible-defaults"),
-  animation: require("!raw!!./assets/examples/animation")
+  animation: require("!raw!!./assets/examples/animation"),
+  stackedBars: require("!raw!!./assets/examples/stacked-bars"),
+  horizontalBarGroup: require("!raw!!./assets/examples/horizontal-bar-group"),
+  functionalStyles: require("!raw!!./assets/examples/functional-styles"),
+  functionalStylesAxis: require("!raw!!./assets/examples/functional-styles-axis")
 };
 
 // Require CSS
@@ -802,7 +806,7 @@ export default class Presentation extends React.Component {
           <Slide transition={["none"]} notes={notes(
               "what makes these more than just a collection of random components"
           )}>
-            <Text fit textFont="secondary" textColor="secondary">
+            <Text fit textFont="secondary" textColor="paleRed">
               opinions
             </Text>
             <Text textFont="secondary" textColor="secondary" style={{fontSize: 150}}>
@@ -827,10 +831,7 @@ export default class Presentation extends React.Component {
                 composable
               </Text>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                powerful
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                reusable
+                flexible
               </Text>
             </Layout>
           </Slide>
@@ -852,10 +853,7 @@ export default class Presentation extends React.Component {
                 composable
               </Text>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                powerful
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                reusable
+                flexible
               </Text>
             </Layout>
             <Layout>
@@ -937,10 +935,7 @@ export default class Presentation extends React.Component {
                 composable
               </Text>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                powerful
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                reusable
+                flexible
               </Text>
             </Layout>
             <TripleAxis/>
@@ -1006,7 +1001,8 @@ export default class Presentation extends React.Component {
 
 
           <Slide transition={["none"]} notes={notes(
-              "opinions"
+              "we wanted to make victory components as customizable as possible",
+              "we wanted to make it possible to change almost anything"
           )}>
             <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
             Data viz should be
@@ -1019,15 +1015,174 @@ export default class Presentation extends React.Component {
                 composable
               </Text>
               <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
-                powerful
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                reusable
+                flexible
               </Text>
             </Layout>
             <Showcase/>
           </Slide>
 
+          <Slide transition={["fade"]} notes={notes(
+            "Maybe we'd like to make some stacked bar charts, easy enough",
+            "but maybe the requirements change, and now wee need a grouped bar chart"
+          )}>
+            <Text textFont="secondary" textColor="secondary"
+              style={{margin: "0.05rem, auto", fontSize: 55}}>
+              VictoryBar
+            </Text>
+            <PlaygroundWrapper codeText={examples.stackedBars}/>
+          </Slide>
+
+          <Slide transition={["fade"]} notes={notes(
+            "Oh, and could you make it horizontal too?",
+            "having very flexible components makes responding to these changes very fast"
+          )}>
+            <Text textFont="secondary" textColor="secondary"
+              style={{margin: "0.05rem, auto", fontSize: 55}}>
+              VictoryBar
+            </Text>
+            <PlaygroundWrapper codeText={examples.horizontalBarGroup}/>
+          </Slide>
+
+          <Slide transition={["fade"]} notes={notes(
+            "we wanted to make it easy for people to change these components",
+            "we also wanted make it easy for DATA to change the components"
+          )}>
+            <Text textFont="secondary" textColor="secondary"
+              style={{margin: "0.05rem, auto", fontSize: 55}}>
+              VictoryScatter
+            </Text>
+            <PlaygroundWrapper codeText={examples.functionalStyles}/>
+          </Slide>
+
+          <Slide transition={["fade"]} notes={notes(
+            "this pattern applies to all of our data types",
+            "and to axes and labels too"
+          )}>
+            <Text textFont="secondary" textColor="secondary"
+              style={{margin: "0.05rem, auto", fontSize: 55}}>
+              VictoryAxis
+            </Text>
+            <PlaygroundWrapper codeText={examples.functionalStylesAxis}/>
+          </Slide>
+
+          <Slide transition={["none"]} notes={notes(
+              "We have a lot more that we're working on to make it even more flexible"
+          )}>
+            <Text fit textFont="secondary" textColor="secondary">
+              Coming Soon
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 20}}>
+              Data accessosr functions
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              General event handling
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              Full support for inverted axes
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              Support for React Native
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              More components!
+            </Text>
+          </Slide>
+
+          <Slide transition={["none"]} notes={notes(
+              "Now I'd like to talk very briefly about infrastructure",
+              "spoiler alert. this section could also be called 'dogfooding our own OSS'"
+          )}>
+            <Text fit textFont="secondary" textColor="secondary">
+              opinions
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 150}}>
+              &
+            </Text>
+            <Text fit textFont="secondary" textColor="paleRed">
+              infrastructure
+            </Text>
+          </Slide>
+
+          <Slide transition={["fade"]} notes={notes(
+            "Victory lives across nearly a dozen repos at this point an is growing",
+            "It's been a challenge to keep everything consistent, especially where infra is concerned"
+          )}>
+            <Image width="40%" src={images.victoryLogo}/>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 0}}>
+              VictoryAxis
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryBar
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryLine
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryScatter
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryPie
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryLabel
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryChart
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryAnimation
+            </Text>
+          </Slide>
+
+          <Slide transition={["none"]} notes={notes(
+              "So we built a tool called builder"
+          )}>
+            <Text fit textFont="secondary" textColor="secondary">
+              Builder
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              composable npm task runner
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              archetypes
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              coming soon: builder init
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              {"https://github.com/FormidableLabs/builder"}
+            </Text>
+          </Slide>
+
+          <Slide transition={["none"]} notes={notes(
+              "We also wanted to create beautiful, consistent docs for all of these repos",
+              "We wanted prop tables and interactive code examples"
+          )}>
+            <Text fit textFont="secondary" textColor="secondary">
+              Ecology
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              Automatic doc generation based on PropTypes
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              Interactive code examples
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              Markdown support
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              {"https://github.com/FormidableLabs/ecology"}
+            </Text>
+          </Slide>
+
+          <Slide transition={["none"]} notes={notes(
+              "We also wanted to create beautiful, consistent docs for all of these repos",
+              "We wanted prop tables and interactive code examples"
+          )}>
+            <Text fit textFont="secondary" textColor="secondary">
+              Thanks!
+            </Text>
+          </Slide>
 
         </CustomDeck>
       </Spectacle>
