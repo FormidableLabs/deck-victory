@@ -25,6 +25,7 @@ import preloader from "spectacle/lib/utils/preloader";
 import Nope from "./assets/components/nope.jsx";
 import ContainerDiagram from "./assets/components/container-diagram";
 import CssDiagram from "./assets/components/css-diagram";
+import LongCssDiagram from "./assets/components/long-css-diagram";
 import JsDiagram from "./assets/components/js-diagram";
 import TemplateDiagram from "./assets/components/template-diagram";
 import BarChartDiagram from "./assets/components/bar-chart-diagram";
@@ -142,8 +143,8 @@ export default class Presentation extends React.Component {
           <Slide
             notes={notes(
             "I work at Formidable",
-            "JS consultancy",
-            "projects for a bunch of different clients",
+            "JS consultancy in fremont",
+            "Ive worked on projects for a number of different clients",
             "I started to notice some trends")}>
             <Image width="100%" src={images.formidableLogo}/>
           </Slide>
@@ -153,14 +154,12 @@ export default class Presentation extends React.Component {
             * --------------------------------------------------------------- */}
           <Slide transition={["fade"]}
             notes={notes(
-            "So, this isn't very surprising",
-            "we have access to more data more easliy than ever before",
+            "So, this isn't very surprising we have access to more data than ever before",
             "and this data becomes very valuable when we can extract useful information from it",
-            "and start to make decisions based on it",
-            "humans are excellent visual pattern matchers",
-            "representing data visually is a very effective way to extract that information",
+            "and start to make business decisions based on that information",
+            "humans are excellent visual pattern matchers so representing data visually very effective",
             "There are entire companies built around this idea",
-            "I walked past tableau on my way here tonight, in fact",
+            "I think if we stood on the roof of this building we'd be able to see tableau",
             "solutions to this problem already exist, but we're a consultancy... so",
             "when our clients say 'we want dashboards', we know they really mean"
           )}>
@@ -174,8 +173,7 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["none"]} notes={notes(
-            "So we figured out how to build custom dashboards",
-            "and at first it went something like this..."
+            "So we figured out how to build custom dashboards"
           )}>
             <Text fit caps textFont="secondary" textColor="secondary">
               Everyone wants
@@ -189,7 +187,6 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["fade"]} notes={notes(
-            "So we figured out how to build custom dashboards",
             "and at first it went something like this..."
           )}>
             <Text bold fit textFont="secondary" textColor="secondary">
@@ -293,7 +290,7 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide notes={notes(
-            "the chart is so nice, the client wants us to build another one"
+            "maybe the chart is so nice, the client wants us to build another one"
           )}>
             <Layout>
               <div style={{flexBasis: "60%", paddingTop: 120, marginRight: 20}}>
@@ -314,11 +311,9 @@ export default class Presentation extends React.Component {
             </Layout>
           </Slide>
 
-          <Slide transition={["fade"]} notes={notes(
+          <Slide transition={["none"]} notes={notes(
             "so we end up writing a second view, since this chart is dealing with different data",
-            "we need to write more html too, so we have somewhere to append the second chart",
-            "and depending on how these charts are layed out, we might have to write a bunch more css",
-            "this is pretty repetitive, but it's only two charts, so maybe we dont take the time to refactor"
+            "we need to write more html too, so we have somewhere to append the second chart"
           )}>
             <Layout>
                 <JsDiagram/>
@@ -332,11 +327,40 @@ export default class Presentation extends React.Component {
             <Layout>
               <Appear fid="1"><div><JsDiagram/></div></Appear>
               <Appear fid="2"><div><TemplateDiagram/></div></Appear>
-              <Appear fid="3"><div><CssDiagram/></div></Appear>
+              <Appear fid="3"><div><svg width={175} height={225}/></div></Appear>
               <Heading size={3} textColor="secondary">
                 <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
               </Heading>
               <LineChartDiagram label={"result #2"}/>
+            </Layout>
+          </Slide>
+
+          <Slide transition={["none"]} notes={notes(
+            "and depending on how these charts are layed out, we might have to write a bunch more css",
+            "this is pretty repetitive, but it's only two charts, so maybe we dont take the time to refactor"
+          )}>
+            <Layout>
+              <div>
+                <JsDiagram/>
+                <JsDiagram/>
+              </div>
+              <div>
+                <TemplateDiagram/>
+                <TemplateDiagram/>
+              </div>
+              <LongCssDiagram/>
+              <div>
+                <Heading size={3} textColor="secondary">
+                  <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                </Heading>
+                <Heading size={3} textColor="secondary">
+                  <i className="fa fa-arrow-right" style={{paddingTop: 200}}/>
+                </Heading>
+              </div>
+              <div>
+                <BarChartDiagram label={"result #1"}/>
+                <LineChartDiagram label={"result #2"}/>
+              </div>
             </Layout>
           </Slide>
 
@@ -368,22 +392,27 @@ export default class Presentation extends React.Component {
             "things can get out of sync in subtle ways"
           )}>
             <Layout>
+              <div>
                 <JsDiagram highlights={[1, 2]}/>
+                <JsDiagram highlights={[5, 6]}/>
+              </div>
+              <div>
                 <TemplateDiagram highlights={[2]}/>
-                <CssDiagram highlights={[2, 3]}/>
+                <TemplateDiagram highlights={[2]}/>
+              </div>
+              <LongCssDiagram highlights={[2, 3, 8, 9, 10, 11, 18, 19]}/>
+              <div>
                 <Heading size={3} textColor="secondary">
                   <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
                 </Heading>
+                <Heading size={3} textColor="secondary">
+                  <i className="fa fa-arrow-right" style={{paddingTop: 200}}/>
+                </Heading>
+              </div>
+              <div>
                 <BarChartDiagram highlightAxes label={"result #1"}/>
-            </Layout>
-            <Layout>
-              <JsDiagram highlights={[5, 6]}/>
-              <TemplateDiagram highlights={[2]}/>
-              <CssDiagram highlights={[7, 6]}/>
-              <Heading size={3} textColor="secondary">
-                <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
-              </Heading>
-              <LineChartDiagram highlightAxes label={"result #2"}/>
+                <LineChartDiagram highlightAxes label={"result #2"}/>
+              </div>
             </Layout>
           </Slide>
 
@@ -443,25 +472,35 @@ export default class Presentation extends React.Component {
             "but we still have to deal with css, still have context switching"
           )}>
             <Layout>
-                <div style={{flexBasis: "30%", paddingTop: 80, marginRight: 20}}>
-                  <Text textFont="secondary" textColor="secondary">
-                    the
-                  </Text>
-                  <Text bold fit textFont="secondary" textColor="secondary">
-                    setup
-                  </Text>
-                </div>
-              <BarChartDiagram label={"spec"}/>
-            </Layout>
-            <Layout>
-              <Appear fid="1"><div><JsDiagram label=".jsx"/></div></Appear>
-              <Appear fid="2"><div><CssDiagram/></div></Appear>
-              <Appear fid="3">
+              <div>
+                <BarChartDiagram highlightAxes highlightColor={"none"} label={"bar spec"}/>
+                <BarChartDiagram highlightBars highlightColor={"none"} label={"axis spec"}/>
+              </div>
+              <div>
                 <Heading size={3} textColor="secondary">
                   <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
                 </Heading>
-              </Appear>
-              <Appear fid="4"><div><ContainerDiagram label={"result"}/></div></Appear>
+                <Heading size={3} textColor="secondary">
+                  <i className="fa fa-arrow-right" style={{paddingTop: 200}}/>
+                </Heading>
+              </div>
+              <div>
+                <JsDiagram label=".jsx"/>
+                <JsDiagram label=".jsx"/>
+              </div>
+              <LongCssDiagram/>
+              <div>
+                <Heading size={3} textColor="secondary">
+                  <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
+                </Heading>
+                <Heading size={3} textColor="secondary">
+                  <i className="fa fa-arrow-right" style={{paddingTop: 200}}/>
+                </Heading>
+              </div>
+              <div>
+                <ContainerDiagram label={"bar component"}/>
+                <ContainerDiagram label={"axis component"}/>
+              </div>
             </Layout>
           </Slide>
 
@@ -588,8 +627,8 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["fade"]} notes={notes(
-            "but it didn't work...",
-            "but that doesn't change the fact that this is still a great idea"
+            "so just wrapping d3 didn't work out very well",
+            "but by that time we were really sold on this data viz in react idea"
           )}>
             <Text bold  fit textFont="secondary" textColor="secondary">
               How do we get there?
@@ -699,7 +738,10 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["fade"]} notes={notes(
-            "but we had something a little more specific in mind"
+            "but we had something a little more specific in mind",
+            "We wanted to make fully customizable, composable data viz components in React",
+            "so we broke charts down into the smallest possible components",
+            "and created an API for putting them back together again"
           )}>
             <Image width="50%" src={images.victoryLogo}/>
 
@@ -711,7 +753,9 @@ export default class Presentation extends React.Component {
             </Layout>
           </Slide>
 
-          <Slide transition={["fade"]}>
+          <Slide transition={["fade"]} notes={notes(
+            "We called it Victory, and we think of it as an ecosystem of chart components"
+          )}>
             <Image width="50%" src={images.victoryLogo}/>
             <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
               An ecosystem of data viz components
@@ -722,15 +766,14 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["fade"]} notes={notes(
-            "There are already several components in the ecosystem",
+            "There are already several components our growing ecosystem",
+            "You can see there are several of these atomic chart components like line and bar",
+            "as well as some higher order components like Chart, and animation",
             "Before I go into more detail about any one of these",
             "I'd like to talk about what defines the ecosystem as a whole"
           )}>
-            <Image width="50%" src={images.victoryLogo}/>
-            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
-              VicoryChart
-            </Text>
-            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+            <Image width="40%" src={images.victoryLogo}/>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 0}}>
               VictoryAxis
             </Text>
             <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
@@ -745,10 +788,19 @@ export default class Presentation extends React.Component {
             <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
               VictoryPie
             </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryLabel
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryChart
+            </Text>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
+              VictoryAnimation
+            </Text>
           </Slide>
 
           <Slide transition={["none"]} notes={notes(
-              "opinions"
+              "what makes these more than just a collection of random components"
           )}>
             <Text fit textFont="secondary" textColor="secondary">
               opinions
@@ -762,7 +814,7 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["none"]} notes={notes(
-              "opinions"
+              "When we were designing the API for Victory we were trying to make something..."
           )}>
             <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
               Data viz should be
@@ -784,7 +836,10 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["none"]} notes={notes(
-              "opinions"
+              "easy: we wanted victory to have a very gentle learning curve",
+              "beginners should be able to get stated FAST without a ton of configuration",
+              "so we baked in a set of sensible defaults and even sample data",
+              "every component will render something even when no props are passed in"
           )}>
             <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
             Data viz should be
@@ -812,27 +867,14 @@ export default class Presentation extends React.Component {
             </Layout>
           </Slide>
 
-          <Slide transition={["fade"]} notes={notes(
-              "easy",
-              "goal, beginners should be able to get started fast",
-              "people with no JS experience should be able to style and change existing components"
-          )}>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 110, paddingBottom: 50}}>
-                clear API
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 100, paddingBottom: 50}}>
-                sensible defaults
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 90, paddingBottom: 50}}>
-                familiar style syntax
-              </Text>
-          </Slide>
-
           <Slide transition={["none"]} notes={notes(
-            "add your own data",
-            "style syntax",
-            "lets use brand colors",
-            "change color"
+            "We also wanted to make it very straightforward to style and change components",
+            "even for people with little to no JS experience",
+            "here's the syntax for adding your own data and changing the colors",
+            "--- make a change to the data ---",
+            "You can also style the chart with some very familiar looking style syntax",
+            "---- change the font size ----",
+            "There's still a lot going on in this chart that we didn't have to define"
           )}>
             <Text textFont="secondary" textColor="secondary"
               style={{margin: "0.05rem, auto", fontSize: 55}}>
@@ -846,18 +888,18 @@ export default class Presentation extends React.Component {
               "    {x: '14-17', y: 5511},\n" +
               "    {x: '18-24', y: 7164}\n" +
               "  ]}\n" +
-              "  style={{\n" +
-              "    labels: {\n" +
-              "      fontSize: 20,\n" +
-              "      fill: 'white'\n" +
-              "    }\n" +
-              "  }}\n" +
               "  sliceColors={[\n" +
               "    '#b5aca3',\n" +
               "    '#91887e',\n" +
               "    '#67615c',\n" +
               "    '#d1c7bc'\n" +
               "  ]}\n" +
+              "  style={{\n" +
+              "    labels: {\n" +
+              "      fontSize: 20,\n" +
+              "      fill: 'white'\n" +
+              "    }\n" +
+              "  }}\n" +
               "/>"
             }/>
           </Slide>
@@ -882,7 +924,7 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["none"]} notes={notes(
-              "opinions"
+              "I've already talked a lot about all the benefits of building data viz from composable components"
           )}>
             <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
             Data viz should be
@@ -905,8 +947,8 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["none"]} notes={notes(
-            "let's take a look at chart",
-            "more sensible defaults",
+            "let's take a look at chart, Chart is actually just a wrapper for other components",
+            "what we're seeing here are it's default child components, two axes and a line",
             "this is actually a composed example"
           )}>
             <Text textFont="secondary" textColor="secondary"
@@ -917,7 +959,7 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["none"]} notes={notes(
-            "with the sensible default children"
+            "Here's what the code to render the same chart looks like when we explicitly define the children"
           )}>
             <Text textFont="secondary" textColor="secondary"
               style={{margin: "0.05rem, auto", fontSize: 55}}>
@@ -935,9 +977,8 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["none"]} notes={notes(
-            "VictoryChart is a composition helper",
-            "It doesn't render any of it's own elements",
-            "It just coordinates the bevavior of its children"
+            "VictoryChart is a composition helper that coordinates the behavior of its children",
+            "setting the domain based on data, laying out the axes"
           )}>
             <Text textFont="secondary" textColor="secondary"
               style={{margin: "0.05rem, auto", fontSize: 55}}>
@@ -955,7 +996,6 @@ export default class Presentation extends React.Component {
 
           <Slide transition={["fade"]} notes={notes(
             "composing charts of different types",
-            "domain is automatically set"
           )}>
             <Text textFont="secondary" textColor="secondary"
               style={{margin: "0.05rem, auto", fontSize: 55}}>
@@ -987,6 +1027,8 @@ export default class Presentation extends React.Component {
             </Layout>
             <Showcase/>
           </Slide>
+
+
         </CustomDeck>
       </Spectacle>
     );
