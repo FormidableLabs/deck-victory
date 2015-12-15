@@ -865,7 +865,7 @@ export default class Presentation extends React.Component {
             </Layout>
           </Slide>
 
-          <Slide transition={["none"]} notes={notes(
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
             "We also wanted to make it very straightforward to style and change components",
             "even for people with little to no JS experience",
             "here's the syntax for adding your own data and changing the colors",
@@ -902,7 +902,7 @@ export default class Presentation extends React.Component {
             }/>
           </Slide>
 
-          <Slide transition={["none"]} notes={notes(
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
             "some more interesting props",
             "all pretty obvious to use",
             "makes it easy to play, and decide how the data looks best"
@@ -941,7 +941,7 @@ export default class Presentation extends React.Component {
             <TripleAxis/>
           </Slide>
 
-          <Slide transition={["none"]} notes={notes(
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
             "let's take a look at chart, Chart is actually just a wrapper for other components",
             "what we're seeing here are it's default child components, two axes and a line",
             "this is actually a composed example"
@@ -953,7 +953,7 @@ export default class Presentation extends React.Component {
             <PlaygroundWrapper codeText={"<VictoryChart/>"}/>
           </Slide>
 
-          <Slide transition={["none"]} notes={notes(
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
             "Here's what the code to render the same chart looks like when we explicitly define the children"
           )}>
             <Text textFont="secondary" textColor="secondary"
@@ -971,7 +971,7 @@ export default class Presentation extends React.Component {
             }/>
           </Slide>
 
-          <Slide transition={["none"]} notes={notes(
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
             "VictoryChart is a composition helper that coordinates the behavior of its children",
             "setting the domain based on data, laying out the axes"
           )}>
@@ -989,7 +989,7 @@ export default class Presentation extends React.Component {
           </Slide>
 
 
-          <Slide transition={["fade"]} notes={notes(
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
             "composing charts of different types",
           )}>
             <Text textFont="secondary" textColor="secondary"
@@ -1021,7 +1021,7 @@ export default class Presentation extends React.Component {
             <Showcase/>
           </Slide>
 
-          <Slide transition={["fade"]} notes={notes(
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
             "Maybe we'd like to make some stacked bar charts, easy enough",
             "but maybe the requirements change, and now wee need a grouped bar chart"
           )}>
@@ -1032,7 +1032,7 @@ export default class Presentation extends React.Component {
             <PlaygroundWrapper codeText={examples.stackedBars}/>
           </Slide>
 
-          <Slide transition={["fade"]} notes={notes(
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
             "Oh, and could you make it horizontal too?",
             "having very flexible components makes responding to these changes very fast"
           )}>
@@ -1043,7 +1043,7 @@ export default class Presentation extends React.Component {
             <PlaygroundWrapper codeText={examples.horizontalBarGroup}/>
           </Slide>
 
-          <Slide transition={["fade"]} notes={notes(
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
             "we wanted to make it easy for people to change these components",
             "we also wanted make it easy for DATA to change the components"
           )}>
@@ -1054,7 +1054,7 @@ export default class Presentation extends React.Component {
             <PlaygroundWrapper codeText={examples.functionalStyles}/>
           </Slide>
 
-          <Slide transition={["fade"]} notes={notes(
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
             "this pattern applies to all of our data types",
             "and to axes and labels too"
           )}>
