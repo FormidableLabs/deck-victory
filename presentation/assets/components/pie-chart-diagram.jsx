@@ -26,7 +26,7 @@ const pieColors = ["#4d4945", "#d1c7bc", "#b5aca3", "#91887e", "#67615c"];
 const labelStyle = {
   color: "#1b2633",
   fontSize: 24,
-  fontFamily: "sans-serif"
+  fontFamily: "'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 };
 
 @Radium
