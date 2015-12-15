@@ -1072,7 +1072,7 @@ export default class Presentation extends React.Component {
               Coming Soon
             </Text>
             <Text textFont="secondary" textColor="secondary" style={{paddingTop: 20}}>
-              Data accessosr functions
+              Data accessor functions
             </Text>
             <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
               General event handling
