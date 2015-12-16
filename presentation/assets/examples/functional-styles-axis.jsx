@@ -1,4 +1,4 @@
-<VictoryAxis
+<VictoryAxis width={900} height={700}
   style={{
     axis: {stroke: "black"},
       grid: {
@@ -11,12 +11,12 @@
           "red" : "grey"
       },
       tickLabels: {
-        fontSize: (tick) => tick == "Earth"?
-          16 : 12
+        fontSize: (tick) => tick == "Earth" ?
+          20 : 16
       }
   }}
   tickValues={[
-    "Mercury", "Venus","Earth",
+    "Mercury", "Venus", "Earth",
     "Mars", "Jupiter"
   ]}
 />

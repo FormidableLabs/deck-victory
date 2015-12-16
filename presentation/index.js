@@ -38,6 +38,8 @@ import Animation from "./assets/components/animation";
 import TripleAxis from "./assets/components/triple-axis";
 //examples
 const examples = {
+  customPie: require("!raw!!./assets/examples/custom-pie"),
+  customDonut: require("!raw!!./assets/examples/custom-donut"),
   chart1: require("!raw!!./assets/examples/victory-chart-1"),
   sensibleDefaults: require("!raw!!./assets/examples/sensible-defaults"),
   animation: require("!raw!!./assets/examples/animation"),
@@ -871,17 +873,29 @@ export default class Presentation extends React.Component {
             <Text fit textFont="secondary" textColor="secondary">
               Builder
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              composable npm task runner
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              archetypes
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              coming soon: builder init
-            </Text>
+
             <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
               {"https://github.com/FormidableLabs/builder"}
+            </Text>
+          </Slide>
+
+          <Slide transition={["none"]} notes={notes(
+              "builder is centered around the concept of archetypes",
+              "define an archetype for a project, keep all your configs and npm tasks there",
+              "projects depends on builder and your archetype, and get all those behaviors and deps",
+              "in addition to their own, and can always override the archtype scripts etc."
+          )}>
+            <Text fit textFont="secondary" textColor="paleRed">
+              Archetypes
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 100}}>
+              manage shared npm scripts
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
+              manage shared configs
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
+              manage shared dependencies
             </Text>
           </Slide>
 
@@ -892,17 +906,26 @@ export default class Presentation extends React.Component {
             <Text fit textFont="secondary" textColor="secondary">
               Ecology
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              Automatic doc generation based on PropTypes
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              Interactive code examples
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              Markdown support
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 50}}>
               {"https://github.com/FormidableLabs/ecology"}
+            </Text>
+          </Slide>
+
+          <Slide transition={["none"]} notes={notes(
+              "We also wanted to create beautiful, consistent docs for all of these repos",
+              "We wanted prop tables and interactive code examples"
+          )}>
+            <Text fit textFont="secondary" textColor="secondary">
+              Living Docs
+            </Text>
+            <Text textFont="secondary" textColor="secondary"  style={{fontSize: 65, paddingTop: 100}}>
+              Generated from PropTypes
+            </Text>
+            <Text textFont="secondary" textColor="secondary"  style={{fontSize: 65, paddingTop: 40}}>
+              support markdown
+            </Text>
+            <Text textFont="secondary" textColor="secondary"  style={{fontSize: 65, paddingTop: 40}}>
+              Interactive code examples
             </Text>
           </Slide>
 
@@ -930,13 +953,13 @@ export default class Presentation extends React.Component {
             </Text>
             <Layout>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                easy
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                composable
+                friendly
               </Text>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
                 flexible
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                composable
               </Text>
             </Layout>
           </Slide>
@@ -952,13 +975,13 @@ export default class Presentation extends React.Component {
             </Text>
             <Layout>
               <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
-                easy
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                composable
+                friendly
               </Text>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
                 flexible
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                composable
               </Text>
             </Layout>
             <Layout>
@@ -977,48 +1000,21 @@ export default class Presentation extends React.Component {
             "--- make a change to the data ---",
             "You can also style the chart with some very familiar looking style syntax",
             "---- change the font size ----",
-            "There's still a lot going on in this chart that we didn't have to define"
+            "There's still a lot going on in this chart that we didn't have to define",
+            "Cats: still winning the internet"
           )}>
-            <PlaygroundWrapper codeText={
-              "<VictoryPie\n" +
-              "  data={[\n" +
-              "    {x: '<5', y: 4279},\n" +
-              "    {x: '5-13', y: 9182},\n" +
-              "    {x: '14-17', y: 5511},\n" +
-              "    {x: '18-24', y: 7164}\n" +
-              "  ]}\n" +
-              "  colorScale={[\n" +
-              "    '#b5aca3',\n" +
-              "    '#91887e',\n" +
-              "    '#67615c',\n" +
-              "    '#d1c7bc'\n" +
-              "  ]}\n" +
-              "  style={{\n" +
-              "    labels: {\n" +
-              "      fontSize: 20,\n" +
-              "      fill: 'white'\n" +
-              "    }\n" +
-              "  }}\n" +
-              "/>"
-            }/>
+            <PlaygroundWrapper codeText={examples.customPie}/>
           </Slide>
 {/* 36 */}
-          <Slide className="FullSlide" transition={["none"]} notes={notes(
+          <Slide className="FullSlide"  transition={["none"]} notes={notes(
             "some more interesting props",
             "all pretty obvious to use",
             "makes it easy to play, and decide how the data looks best"
           )}>
-            <PlaygroundWrapper codeText={
-              "<VictoryPie\n" +
-              "  innerRadius={100}\n" +
-              "  startAngle={-90}\n" +
-              "  endAngle={90}\n" +
-              "  padAngle={2}\n" +
-              "/>"
-            }/>
+            <PlaygroundWrapper codeText={examples.customDonut}/>
           </Slide>
 {/* 37 */}
-          <Slide transition={["none"]} notes={notes(
+          <Slide  notes={notes(
               "I've already talked a lot about all the benefits of building data viz from composable components"
           )}>
             <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
@@ -1026,19 +1022,19 @@ export default class Presentation extends React.Component {
             </Text>
             <Layout>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                easy
-              </Text>
-              <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
-                composable
+                friendly
               </Text>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
                 flexible
+              </Text>
+              <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
+                composable
               </Text>
             </Layout>
             <TripleAxis/>
           </Slide>
 {/* 38 */}
-          <Slide className="FullSlide" transition={["none"]} notes={notes(
+          <Slide className="FullSlide"  notes={notes(
             "let's take a look at chart, Chart is actually just a wrapper for other components",
             "what we're seeing here are it's default child components, two axes and a line",
             "this is actually a composed example"
@@ -1073,13 +1069,13 @@ export default class Presentation extends React.Component {
             }/>
           </Slide>
 {/* 41 */}
-          <Slide className="FullSlide" transition={["fade"]} notes={notes(
+          <Slide className="FullSlide" notes={notes(
             "composing charts of different types",
           )}>
             <PlaygroundWrapper codeText={examples.chart1}/>
           </Slide>
 {/* 42 */}
-          <Slide transition={["none"]} notes={notes(
+          <Slide notes={notes(
               "we wanted to make victory components as customizable as possible",
               "we wanted to make it possible to change almost anything"
           )}>
@@ -1088,13 +1084,13 @@ export default class Presentation extends React.Component {
             </Text>
             <Layout>
               <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                easy
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                composable
+                friendly
               </Text>
               <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
                 flexible
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                composable
               </Text>
             </Layout>
             <Showcase/>
@@ -1128,37 +1124,49 @@ export default class Presentation extends React.Component {
             <PlaygroundWrapper codeText={examples.functionalStylesAxis}/>
           </Slide>
 {/* 47 */}
-          <Slide transition={["none"]} notes={notes(
-              "We have a lot more that we're working on to make it even more flexible"
+          <Slide notes={notes(
+              "We have a lot more that we're working on to make it even more flexible",
+              "data accessor functions will allow more flexibillity in data format",
+              "data transformation on the fly",
+              "Add event handlers to atomic units of data the same way we add styles.",
+              "That means interactivity can be controlled by data too!",
+              "support React Native. We're switching to ReactArt / Native Art, so we",
+              "can support mobile and desktop platforms from the same code base"
           )}>
             <Text fit textFont="secondary" textColor="secondary">
               Coming Soon
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 20}}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 100}}>
               Data accessor functions
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              General event handling
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
+              General interactivity support
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              Full support for inverted axes
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
               Support for React Native
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
               More components!
             </Text>
           </Slide>
-{/* 48 */}
 
-{/* 49 */}
+          <Slide transition={["none"]} notes={notes(
+              "Stay tuned"
+          )}>
+            <Text fit textFont="secondary" textColor="secondary">
+              Stay tuned!
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 100}}>
+              victory.formidable.com
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
+              blog.formidable.com
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
+              office hours
+            </Text>
+          </Slide>
 
-{/* 50 */}
-
-{/* 51 */}
-
-{/* 52 */}
           <Slide transition={["none"]} notes={notes(
               "We also wanted to create beautiful, consistent docs for all of these repos",
               "We wanted prop tables and interactive code examples"
@@ -1166,6 +1174,11 @@ export default class Presentation extends React.Component {
             <Text fit textFont="secondary" textColor="secondary">
               Thanks!
             </Text>
+            <Layout>
+              <Heading size={3} textColor={colors.secondary}>
+                <i className="fa fa-github"/> boygirl
+              </Heading>
+            </Layout>
           </Slide>
 
         </CustomDeck>

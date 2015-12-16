@@ -90,7 +90,7 @@ export default class PieChartDiagram extends React.Component {
             padAngle={2}
             animate={this.state.animate}
             data={this.state.data}
-            sliceColors={pieColors}
+            colorScale={pieColors}
             style={pieStyle}
           />
         </svg>

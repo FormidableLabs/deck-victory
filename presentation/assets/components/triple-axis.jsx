@@ -6,8 +6,8 @@ import {VictoryLine} from "victory-line";
 
 const style = {
   parent: {
-    width: 900,
-    height: 450,
+    width: 1000,
+    height: 550,
     margin: 50,
     padding: 20,
   }
@@ -23,8 +23,8 @@ export default class TripleAxis extends React.Component {
               axis: {strokeWidth: 3},
               tickLabels: {fontSize: 12}
             }}
-            width={850}
-            height={400}
+            width={900}
+            height={500}
             domain={[0, 20]}
             label="Time in microseconds"
             standalone={false}/>
@@ -35,8 +35,8 @@ export default class TripleAxis extends React.Component {
               ticks: {stroke: "#2b303b"},
               tickLabels: {fontSize: 12}
             }}
-            width={850}
-            height={400}
+            width={900}
+            height={500}
             domain={[-200, 200]}
             label="Low Frequency"
             standalone={false}/>
@@ -47,8 +47,8 @@ export default class TripleAxis extends React.Component {
               ticks: {stroke: "#bd4139"},
               tickLabels: {fontSize: 12}
             }}
-            width={850}
-            height={400}
+            width={900}
+            height={500}
             orientation="right"
             domain={[-0.8, 0.8]}
             label="High Frequency"
@@ -58,8 +58,8 @@ export default class TripleAxis extends React.Component {
             style={{
               data: {stroke: "#2b303b", strokeWidth: 3}
             }}
-            width={850}
-            height={400}
+            width={900}
+            height={500}
             y={(x) => 200 * Math.exp(-0.05 * x) * Math.sin(x)}
             interpolation="basis"
             domain={{
@@ -72,8 +72,8 @@ export default class TripleAxis extends React.Component {
             style={{
               data: {stroke: "#bd4139", strokeWidth: 3}
             }}
-            width={850}
-            height={400}
+            width={900}
+            height={500}
             y={(x) => 0.8 * Math.exp(-0.5 * x) * Math.sin(10 * x)}
             interpolation="basis"
             samples={500}

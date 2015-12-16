@@ -1,4 +1,4 @@
-<VictoryChart>
+<VictoryChart width={900} height={700}>
   <VictoryAxis
     style={{
       tickLabels: {fill: "none"},

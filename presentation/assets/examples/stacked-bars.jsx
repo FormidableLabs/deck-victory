@@ -1,4 +1,6 @@
-<VictoryBar stacked
+<VictoryBar
+  stacked
+  height={400}
   style={{
     data: {width: 20},
     labels: {fontSize: 18}
