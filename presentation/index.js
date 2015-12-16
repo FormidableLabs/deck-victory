@@ -987,7 +987,7 @@ export default class Presentation extends React.Component {
               "    {x: '14-17', y: 5511},\n" +
               "    {x: '18-24', y: 7164}\n" +
               "  ]}\n" +
-              "  sliceColors={[\n" +
+              "  colorScale={[\n" +
               "    '#b5aca3',\n" +
               "    '#91887e',\n" +
               "    '#67615c',\n" +

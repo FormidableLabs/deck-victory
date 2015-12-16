@@ -12,10 +12,8 @@ html, body {
 
 .FullSlide {
   position: absolute;
-  top: 0;
   left: 0;
-  bottom: 0;
-
+  top: 50%;
   max-width: none !important;
   width: 100%;
   max-height: none !important;
@@ -23,6 +21,7 @@ html, body {
 }
 
 .Interactive {
+  transform: translateY(-50%);
   min-height: 333px;
   text-align: left;
   width: 100%;
