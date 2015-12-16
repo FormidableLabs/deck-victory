@@ -15,6 +15,10 @@ const labelStyle = {
   fontFamily: "'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif"
 };
 
+const iconStyle = {
+  fontFamily: "FontAwesome"
+}
+
 @Radium
 export default class ContainerDiagram extends React.Component {
   static propTypes = {
@@ -29,7 +33,11 @@ export default class ContainerDiagram extends React.Component {
     return (
       <div>
         <h1 style={labelStyle}>{this.props.label}</h1>
-        <svg style={containerStyle}/>
+        <svg style={containerStyle}>
+          <circle cx={45} cy={112} r={15} fill="#b5aca3"/>
+          <circle cx={112} cy={112} r={15} fill="#b5aca3"/>
+          <circle cx={180} cy={112} r={15} fill="#b5aca3"/>
+        </svg>
       </div>
     );
   }

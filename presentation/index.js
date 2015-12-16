@@ -134,7 +134,7 @@ export default class Presentation extends React.Component {
           {/* ---------------------------------------------------------------
             * Title
             * --------------------------------------------------------------- */}
-
+{/* 1 */}
           <Slide id="title"
             notes={
             "I want to tell you about data viz components for react, but first a little background..."}>
@@ -142,8 +142,11 @@ export default class Presentation extends React.Component {
             <Text fit textFont="secondary" textColor="secondary">
               data visualization for React
             </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: "2rem"}}>
+              victory.formidable.com
+            </Text>
           </Slide>
-
+{/* 1 */}
           <Slide
             notes={notes(
             "I work at Formidable",
@@ -151,11 +154,17 @@ export default class Presentation extends React.Component {
             "Ive worked on projects for a number of different clients",
             "I started to notice some trends")}>
             <Image width="100%" src={images.formidableLogo}/>
+            <Layout>
+              <Heading size={3} textColor={colors.secondary}>
+                <i className="fa fa-github"/> boygirl
+              </Heading>
+            </Layout>
           </Slide>
 
           {/* ---------------------------------------------------------------
             * Background: the standard approach
             * --------------------------------------------------------------- */}
+{/* 2 */}
           <Slide transition={["fade"]}
             notes={notes(
             "So, this isn't very surprising we have access to more data than ever before",
@@ -175,7 +184,7 @@ export default class Presentation extends React.Component {
               Dashboards
             </Text>
           </Slide>
-
+{/* 3 */}
           <Slide transition={["none"]} notes={notes(
             "So we figured out how to build custom dashboards"
           )}>
@@ -189,7 +198,7 @@ export default class Presentation extends React.Component {
               Dashboards
             </Text>
           </Slide>
-
+{/* 4 */}
           <Slide transition={["fade"]} notes={notes(
             "and at first it went something like this..."
           )}>
@@ -200,7 +209,7 @@ export default class Presentation extends React.Component {
               approach
             </Text>
           </Slide>
-
+{/* 5 */}
           <Slide transition={["fade"]} notes={notes(
             "The client would give us a spec, and we'd start setting up a project",
             "We'd write some JS, and some flavor of html template, and some css",
@@ -231,7 +240,7 @@ export default class Presentation extends React.Component {
                 <Appear fid="5"><div><ContainerDiagram label={"result"}/></div></Appear>
               </Layout>
           </Slide>
-
+{/* 6 */}
           <Slide notes={notes(
             "of course we picked d3",
             "how many of you have used d3? pretty much everyone?"
@@ -249,7 +258,7 @@ export default class Presentation extends React.Component {
               .enter( ) d3
             </Text>
           </Slide>
-
+{/* 7 */}
           <Slide notes={notes(
             "so we'd write a bunch of d3, and a bunch more css",
             "to do this really well it takes quite a bit of design effort in addition to code",
@@ -292,7 +301,7 @@ export default class Presentation extends React.Component {
               </Fill>
             </Layout>
           </Slide>
-
+{/* 8 */}
           <Slide notes={notes(
             "maybe the chart is so nice, the client wants us to build another one"
           )}>
@@ -314,7 +323,7 @@ export default class Presentation extends React.Component {
               </Fill>
             </Layout>
           </Slide>
-
+{/* 9 */}
           <Slide transition={["none"]} notes={notes(
             "so we end up writing a second view, since this chart is dealing with different data",
             "we need to write more html too, so we have somewhere to append the second chart"
@@ -338,7 +347,7 @@ export default class Presentation extends React.Component {
               <LineChartDiagram label={"result #2"}/>
             </Layout>
           </Slide>
-
+{/* 10 */}
           <Slide transition={["none"]} notes={notes(
             "and depending on how these charts are layed out, we might have to write a bunch more css",
             "this is pretty repetitive, but it's only two charts, so maybe we dont take the time to refactor"
@@ -367,7 +376,7 @@ export default class Presentation extends React.Component {
               </div>
             </Layout>
           </Slide>
-
+{/* 11 */}
           <Slide notes={notes(
             "and then of course the spec changes"
           )}>
@@ -389,7 +398,7 @@ export default class Presentation extends React.Component {
               </Fill>
             </Layout>
           </Slide>
-
+{/* 12 */}
           <Slide transition={["none"]} notes={notes(
             "And to match the new spec, we need to make changes all over the place",
             "not only is this a lot of annoying context switching, it's also pretty error prone",
@@ -419,7 +428,7 @@ export default class Presentation extends React.Component {
               </div>
             </Layout>
           </Slide>
-
+{/* 13 */}
           <Slide transition={["fade"]} notes={notes(
             "so overall the we've found the our standard approach had",
             "some room for improvement"
@@ -434,7 +443,7 @@ export default class Presentation extends React.Component {
               <ListItem textFont="secondary">Error prone</ListItem>
             </List>
           </Slide>
-
+{/* 14 */}
           <Slide transition={["fade"]} notes={notes(
             "So we thought we could do better",
             "what if we broke our code into small reusable components",
@@ -460,7 +469,7 @@ export default class Presentation extends React.Component {
           {/* ---------------------------------------------------------------
             * Background: React and Radium
             * --------------------------------------------------------------- */}
-
+{/* 15 */}
           <Slide transition={["none"]} notes={notes(
             "Luckily there's a tool that makes it very easy",
             "so let's see how our imaginary project would go in React"
@@ -498,7 +507,7 @@ export default class Presentation extends React.Component {
                   <i className="fa fa-arrow-right" style={{paddingTop: 125}}/>
                 </Heading>
                 <Heading size={3} textColor="secondary">
-                  <i className="fa fa-arrow-right" style={{paddingTop: 200}}/>
+                  <i className="fa fa-arrow-right" style={{paddingTop: 225}}/>
                 </Heading>
               </div>
               <div>
@@ -507,7 +516,7 @@ export default class Presentation extends React.Component {
               </div>
             </Layout>
           </Slide>
-
+{/* 16 */}
           <Slide notes={notes(
             "so we built a tool called Radium",
             "a set of tools for managing inline styles in react",
@@ -522,7 +531,7 @@ export default class Presentation extends React.Component {
               </Text>
             </Appear>
           </Slide>
-
+{/* 17 */}
           <Slide transition={["fade"]} notes={notes(
             "and what we're left with is something really nice"
           )}>
@@ -543,7 +552,7 @@ export default class Presentation extends React.Component {
               <ContainerDiagram label={"result"}/>
             </Layout>
           </Slide>
-
+{/* 18 */}
           <Slide transition={["fade"]} notes={notes(
             "there are a lot of benefits to writing components this way"
           )}>
@@ -556,7 +565,7 @@ export default class Presentation extends React.Component {
               <ListItem textFont="secondary">Logic and style are tightly coupled</ListItem>
             </List>
           </Slide>
-
+{/* 19 */}
           <Slide transition={["fade"]} notes={notes(
             "ideal for data viz an especially dashboards",
             "composable parts styled completely independently, dont worry about style context",
@@ -578,7 +587,7 @@ export default class Presentation extends React.Component {
               <BarChartDiagram label={"result"}/>
             </Layout>
           </Slide>
-
+{/* 20 */}
           <Slide transition={["fade"]} notes={notes(
             "So what happens if we take our d3 visualizations",
             "and port them to React?"
@@ -604,7 +613,7 @@ export default class Presentation extends React.Component {
               <Appear fid="5"><div><Nope/></div></Appear>
             </Layout>
           </Slide>
-
+{/* 21 */}
           <Slide transition={["fade"]} notes={notes(
             "because d3 and React have incompatible DOM models and methods for handling data",
             "It is possible to use them together anyway, but this usually involves",
@@ -629,7 +638,7 @@ export default class Presentation extends React.Component {
               </List>
             </div>
           </Slide>
-
+{/* 22 */}
           <Slide transition={["fade"]} notes={notes(
             "so just wrapping d3 didn't work out very well",
             "but by that time we were really sold on this data viz in react idea"
@@ -649,7 +658,7 @@ export default class Presentation extends React.Component {
               <BarChartDiagram label={"result"}/>
             </Layout>
           </Slide>
-
+{/* 23 */}
           <Slide transition={["fade"]} notes={notes(
             "so we thought"
           )}>
@@ -666,7 +675,7 @@ export default class Presentation extends React.Component {
               and just a little bit of d3
             </Text>
           </Slide>
-
+{/* 24 */}
           <Slide transition={["none"]} notes={notes(
             "what do I mean by just a little bit of d3",
             "Well we couldn't use any of the pieces that interacted with the DOM",
@@ -689,7 +698,7 @@ export default class Presentation extends React.Component {
               .enter()
             </Text>
           </Slide>
-
+{/* 25 */}
           <Slide transition={["none"]} notes={notes(
             "but there are also some tremendously useful parts",
             "And d3 has recently been broken up into modules",
@@ -711,7 +720,7 @@ export default class Presentation extends React.Component {
               d3.interpolate
             </Text>
           </Slide>
-
+{/* 26 */}
           <Slide transition={["none"]} notes={notes(
             "And all we're left with is some math",
           )}>
@@ -722,7 +731,7 @@ export default class Presentation extends React.Component {
               {"Math"}
             </Text>
           </Slide>
-
+{/* 27 */}
           <Slide notes={notes(
             "so now the question becomes",
             "probably anything"
@@ -740,7 +749,7 @@ export default class Presentation extends React.Component {
               and math
             </Text>
           </Slide>
-
+{/* 30 */}
           <Slide transition={["fade"]} notes={notes(
             "but we had something a little more specific in mind",
             "We wanted to make fully customizable, composable data viz components in React",
@@ -756,7 +765,7 @@ export default class Presentation extends React.Component {
               <PieChartDiagram animate/>
             </Layout>
           </Slide>
-
+{/* 31 */}
           <Slide transition={["fade"]} notes={notes(
             "We called it Victory, and we think of it as an ecosystem of chart components"
           )}>
@@ -768,7 +777,7 @@ export default class Presentation extends React.Component {
               for React
             </Text>
           </Slide>
-
+{/* 32 */}
           <Slide transition={["fade"]} notes={notes(
             "There are already several components our growing ecosystem",
             "You can see there are several of these atomic chart components like line and bar",
@@ -802,295 +811,10 @@ export default class Presentation extends React.Component {
               VictoryAnimation
             </Text>
           </Slide>
-
+{/* 33 */}
           <Slide transition={["none"]} notes={notes(
-              "what makes these more than just a collection of random components"
-          )}>
-            <Text fit textFont="secondary" textColor="paleRed">
-              opinions
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 150}}>
-              &
-            </Text>
-            <Text fit textFont="secondary" textColor="secondary">
-              infrastructure
-            </Text>
-          </Slide>
-
-          <Slide transition={["none"]} notes={notes(
-              "When we were designing the API for Victory we were trying to make something..."
-          )}>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
-              Data viz should be
-            </Text>
-            <Layout>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                easy
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                composable
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                flexible
-              </Text>
-            </Layout>
-          </Slide>
-
-          <Slide transition={["none"]} notes={notes(
-              "easy: we wanted victory to have a very gentle learning curve",
-              "beginners should be able to get stated FAST without a ton of configuration",
-              "so we baked in a set of sensible defaults and even sample data",
-              "every component will render something even when no props are passed in"
-          )}>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
-            Data viz should be
-            </Text>
-            <Layout>
-              <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
-                easy
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                composable
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                flexible
-              </Text>
-            </Layout>
-            <Layout>
-              <Text textFont="tertiary" textColor="secondary"
-                style={{marginTop: "150px", fontSize: 60}}>
-                {"<VictoryPie/>"}
-              </Text>
-              <VictoryPie/>
-            </Layout>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["none"]} notes={notes(
-            "We also wanted to make it very straightforward to style and change components",
-            "even for people with little to no JS experience",
-            "here's the syntax for adding your own data and changing the colors",
-            "--- make a change to the data ---",
-            "You can also style the chart with some very familiar looking style syntax",
-            "---- change the font size ----",
-            "There's still a lot going on in this chart that we didn't have to define"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryPie
-            </Text>
-            <PlaygroundWrapper codeText={
-              "<VictoryPie\n" +
-              "  data={[\n" +
-              "    {x: '<5', y: 4279},\n" +
-              "    {x: '5-13', y: 9182},\n" +
-              "    {x: '14-17', y: 5511},\n" +
-              "    {x: '18-24', y: 7164}\n" +
-              "  ]}\n" +
-              "  sliceColors={[\n" +
-              "    '#b5aca3',\n" +
-              "    '#91887e',\n" +
-              "    '#67615c',\n" +
-              "    '#d1c7bc'\n" +
-              "  ]}\n" +
-              "  style={{\n" +
-              "    labels: {\n" +
-              "      fontSize: 20,\n" +
-              "      fill: 'white'\n" +
-              "    }\n" +
-              "  }}\n" +
-              "/>"
-            }/>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["none"]} notes={notes(
-            "some more interesting props",
-            "all pretty obvious to use",
-            "makes it easy to play, and decide how the data looks best"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryPie
-            </Text>
-            <PlaygroundWrapper codeText={
-              "<VictoryPie\n" +
-              "  innerRadius={100}\n" +
-              "  startAngle={-90}\n" +
-              "  endAngle={90}\n" +
-              "  padAngle={2}\n" +
-              "/>"
-            }/>
-          </Slide>
-
-          <Slide transition={["none"]} notes={notes(
-              "I've already talked a lot about all the benefits of building data viz from composable components"
-          )}>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
-            Data viz should be
-            </Text>
-            <Layout>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                easy
-              </Text>
-              <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
-                composable
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                flexible
-              </Text>
-            </Layout>
-            <TripleAxis/>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["none"]} notes={notes(
-            "let's take a look at chart, Chart is actually just a wrapper for other components",
-            "what we're seeing here are it's default child components, two axes and a line",
-            "this is actually a composed example"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryChart
-            </Text>
-            <PlaygroundWrapper codeText={"<VictoryChart/>"}/>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["none"]} notes={notes(
-            "Here's what the code to render the same chart looks like when we explicitly define the children"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryChart
-            </Text>
-            <PlaygroundWrapper codeText={
-              "<VictoryChart>\n" +
-              "  <VictoryAxis/>\n" +
-              "  <VictoryAxis dependentAxis/>\n" +
-              "  <VictoryLine\n" +
-              "    y={(x) => x}\n" +
-              "  />\n" +
-              "</VictoryChart>"
-            }/>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["none"]} notes={notes(
-            "VictoryChart is a composition helper that coordinates the behavior of its children",
-            "setting the domain based on data, laying out the axes"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryChart
-            </Text>
-            <PlaygroundWrapper codeText={
-              "<VictoryChart>\n" +
-              "  <VictoryLine\n" +
-              "    y={(x) => Math.sin(2 * Math.PI * x)}\n" +
-              "  />\n" +
-              "</VictoryChart>"
-            }/>
-          </Slide>
-
-
-          <Slide className="FullSlide" transition={["fade"]} notes={notes(
-            "composing charts of different types",
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryChart
-            </Text>
-            <PlaygroundWrapper codeText={examples.chart1}/>
-          </Slide>
-
-
-          <Slide transition={["none"]} notes={notes(
-              "we wanted to make victory components as customizable as possible",
-              "we wanted to make it possible to change almost anything"
-          )}>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
-            Data viz should be
-            </Text>
-            <Layout>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                easy
-              </Text>
-              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
-                composable
-              </Text>
-              <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
-                flexible
-              </Text>
-            </Layout>
-            <Showcase/>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["fade"]} notes={notes(
-            "Maybe we'd like to make some stacked bar charts, easy enough",
-            "but maybe the requirements change, and now wee need a grouped bar chart"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryBar
-            </Text>
-            <PlaygroundWrapper codeText={examples.stackedBars}/>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["fade"]} notes={notes(
-            "Oh, and could you make it horizontal too?",
-            "having very flexible components makes responding to these changes very fast"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryBar
-            </Text>
-            <PlaygroundWrapper codeText={examples.horizontalBarGroup}/>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["fade"]} notes={notes(
-            "we wanted to make it easy for people to change these components",
-            "we also wanted make it easy for DATA to change the components"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryScatter
-            </Text>
-            <PlaygroundWrapper codeText={examples.functionalStyles}/>
-          </Slide>
-
-          <Slide className="FullSlide" transition={["fade"]} notes={notes(
-            "this pattern applies to all of our data types",
-            "and to axes and labels too"
-          )}>
-            <Text textFont="secondary" textColor="secondary"
-              style={{margin: "0.05rem, auto", fontSize: 55}}>
-              VictoryAxis
-            </Text>
-            <PlaygroundWrapper codeText={examples.functionalStylesAxis}/>
-          </Slide>
-
-          <Slide transition={["none"]} notes={notes(
-              "We have a lot more that we're working on to make it even more flexible"
-          )}>
-            <Text fit textFont="secondary" textColor="secondary">
-              Coming Soon
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 20}}>
-              Data accessor functions
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              General event handling
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              Full support for inverted axes
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              Support for React Native
-            </Text>
-            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
-              More components!
-            </Text>
-          </Slide>
-
-          <Slide transition={["none"]} notes={notes(
-              "Now I'd like to talk very briefly about infrastructure",
-              "spoiler alert. this section could also be called 'dogfooding our own OSS'"
+              "what makes these more than just a collection of random components",
+              "I want to talk briefly about the infrastructure before we dig into victory"
           )}>
             <Text fit textFont="secondary" textColor="secondary">
               opinions
@@ -1104,11 +828,18 @@ export default class Presentation extends React.Component {
           </Slide>
 
           <Slide transition={["fade"]} notes={notes(
-            "Victory lives across nearly a dozen repos at this point an is growing",
-            "It's been a challenge to keep everything consistent, especially where infra is concerned"
+            "We knew from the beginning that we wanted each victory component to have its own npm pkg",
+            "and they all needed to have identical infrastructure",
+            "so we started out with a generator, and everything was fine for a bit",
+            "but as we were developing, and making little changes to the infrastructure, and updating deps",
+            "the repos got our of sync, and it was a tedious and manual process to sync them up"
           )}>
-            <Image width="40%" src={images.victoryLogo}/>
-            <Text textFont="primary" textColor="secondary" style={{paddingTop: 0}}>
+            <Appear>
+              <Text fit textFont="primary" textColor="secondary">
+                So many repos
+              </Text>
+            </Appear>
+            <Text textFont="primary" textColor="secondary" style={{paddingTop: 30}}>
               VictoryAxis
             </Text>
             <Text textFont="primary" textColor="secondary" style={{paddingTop: 10}}>
@@ -1175,6 +906,259 @@ export default class Presentation extends React.Component {
             </Text>
           </Slide>
 
+          <Slide transition={["none"]} notes={notes(
+              "Now I'd like to talk very briefly about infrastructure",
+              "spoiler alert. this section could also be called 'dogfooding our own OSS'"
+          )}>
+            <Text fit textFont="secondary" textColor="paleRed">
+              opinions
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 150}}>
+              &
+            </Text>
+            <Text fit textFont="secondary" textColor="secondary">
+              infrastructure
+            </Text>
+          </Slide>
+
+
+          <Slide transition={["none"]} notes={notes(
+              "When we were designing the API for Victory we were trying to make something..."
+          )}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
+              Data viz should be
+            </Text>
+            <Layout>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                easy
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                composable
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                flexible
+              </Text>
+            </Layout>
+          </Slide>
+{/* 34 */}
+          <Slide transition={["none"]} notes={notes(
+              "easy: we wanted victory to have a very gentle learning curve",
+              "beginners should be able to get stated FAST without a ton of configuration",
+              "so we baked in a set of sensible defaults and even sample data",
+              "every component will render something even when no props are passed in"
+          )}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
+            Data viz should be
+            </Text>
+            <Layout>
+              <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
+                easy
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                composable
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                flexible
+              </Text>
+            </Layout>
+            <Layout>
+              <Text textFont="tertiary" textColor="secondary"
+                style={{marginTop: "150px", fontSize: 60}}>
+                {"<VictoryPie/>"}
+              </Text>
+              <VictoryPie/>
+            </Layout>
+          </Slide>
+{/* 35 */}
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
+            "We also wanted to make it very straightforward to style and change components",
+            "even for people with little to no JS experience",
+            "here's the syntax for adding your own data and changing the colors",
+            "--- make a change to the data ---",
+            "You can also style the chart with some very familiar looking style syntax",
+            "---- change the font size ----",
+            "There's still a lot going on in this chart that we didn't have to define"
+          )}>
+            <PlaygroundWrapper codeText={
+              "<VictoryPie\n" +
+              "  data={[\n" +
+              "    {x: '<5', y: 4279},\n" +
+              "    {x: '5-13', y: 9182},\n" +
+              "    {x: '14-17', y: 5511},\n" +
+              "    {x: '18-24', y: 7164}\n" +
+              "  ]}\n" +
+              "  sliceColors={[\n" +
+              "    '#b5aca3',\n" +
+              "    '#91887e',\n" +
+              "    '#67615c',\n" +
+              "    '#d1c7bc'\n" +
+              "  ]}\n" +
+              "  style={{\n" +
+              "    labels: {\n" +
+              "      fontSize: 20,\n" +
+              "      fill: 'white'\n" +
+              "    }\n" +
+              "  }}\n" +
+              "/>"
+            }/>
+          </Slide>
+{/* 36 */}
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
+            "some more interesting props",
+            "all pretty obvious to use",
+            "makes it easy to play, and decide how the data looks best"
+          )}>
+            <PlaygroundWrapper codeText={
+              "<VictoryPie\n" +
+              "  innerRadius={100}\n" +
+              "  startAngle={-90}\n" +
+              "  endAngle={90}\n" +
+              "  padAngle={2}\n" +
+              "/>"
+            }/>
+          </Slide>
+{/* 37 */}
+          <Slide transition={["none"]} notes={notes(
+              "I've already talked a lot about all the benefits of building data viz from composable components"
+          )}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
+            Data viz should be
+            </Text>
+            <Layout>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                easy
+              </Text>
+              <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
+                composable
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                flexible
+              </Text>
+            </Layout>
+            <TripleAxis/>
+          </Slide>
+{/* 38 */}
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
+            "let's take a look at chart, Chart is actually just a wrapper for other components",
+            "what we're seeing here are it's default child components, two axes and a line",
+            "this is actually a composed example"
+          )}>
+            <PlaygroundWrapper codeText={"<VictoryChart/>"}/>
+          </Slide>
+{/* 39 */}
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
+            "Here's what the code to render the same chart looks like when we explicitly define the children"
+          )}>
+            <PlaygroundWrapper codeText={
+              "<VictoryChart>\n" +
+              "  <VictoryAxis/>\n" +
+              "  <VictoryAxis dependentAxis/>\n" +
+              "  <VictoryLine\n" +
+              "    y={(x) => x}\n" +
+              "  />\n" +
+              "</VictoryChart>"
+            }/>
+          </Slide>
+{/* 40 */}
+          <Slide className="FullSlide" transition={["none"]} notes={notes(
+            "VictoryChart is a composition helper that coordinates the behavior of its children",
+            "setting the domain based on data, laying out the axes"
+          )}>
+            <PlaygroundWrapper codeText={
+              "<VictoryChart>\n" +
+              "  <VictoryLine\n" +
+              "    y={(x) => Math.sin(2 * Math.PI * x)}\n" +
+              "  />\n" +
+              "</VictoryChart>"
+            }/>
+          </Slide>
+{/* 41 */}
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
+            "composing charts of different types",
+          )}>
+            <PlaygroundWrapper codeText={examples.chart1}/>
+          </Slide>
+{/* 42 */}
+          <Slide transition={["none"]} notes={notes(
+              "we wanted to make victory components as customizable as possible",
+              "we wanted to make it possible to change almost anything"
+          )}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 90}}>
+            Data viz should be
+            </Text>
+            <Layout>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                easy
+              </Text>
+              <Text textFont="secondary" textColor="secondary" style={{fontSize: 55}}>
+                composable
+              </Text>
+              <Text textFont="secondary" textColor="paleRed" style={{fontSize: 55}}>
+                flexible
+              </Text>
+            </Layout>
+            <Showcase/>
+          </Slide>
+{/* 43 */}
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
+            "Maybe we'd like to make some stacked bar charts, easy enough",
+            "but maybe the requirements change, and now wee need a grouped bar chart"
+          )}>
+            <PlaygroundWrapper codeText={examples.stackedBars}/>
+          </Slide>
+{/* 44 */}
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
+            "Oh, and could you make it horizontal too?",
+            "having very flexible components makes responding to these changes very fast"
+          )}>
+            <PlaygroundWrapper codeText={examples.horizontalBarGroup}/>
+          </Slide>
+{/* 45 */}
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
+            "we wanted to make it easy for people to change these components",
+            "we also wanted make it easy for DATA to change the components"
+          )}>
+            <PlaygroundWrapper codeText={examples.functionalStyles}/>
+          </Slide>
+{/* 46 */}
+          <Slide className="FullSlide" transition={["fade"]} notes={notes(
+            "this pattern applies to all of our data types",
+            "and to axes and labels too"
+          )}>
+            <PlaygroundWrapper codeText={examples.functionalStylesAxis}/>
+          </Slide>
+{/* 47 */}
+          <Slide transition={["none"]} notes={notes(
+              "We have a lot more that we're working on to make it even more flexible"
+          )}>
+            <Text fit textFont="secondary" textColor="secondary">
+              Coming Soon
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 20}}>
+              Data accessor functions
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              General event handling
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              Full support for inverted axes
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              Support for React Native
+            </Text>
+            <Text textFont="secondary" textColor="secondary" style={{paddingTop: 10}}>
+              More components!
+            </Text>
+          </Slide>
+{/* 48 */}
+
+{/* 49 */}
+
+{/* 50 */}
+
+{/* 51 */}
+
+{/* 52 */}
           <Slide transition={["none"]} notes={notes(
               "We also wanted to create beautiful, consistent docs for all of these repos",
               "We wanted prop tables and interactive code examples"

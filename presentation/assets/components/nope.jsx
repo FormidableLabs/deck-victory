@@ -30,10 +30,10 @@ export default class ContainerDiagram extends React.Component {
       <div>
         <h1 style={labelStyle}>{this.props.label}</h1>
         <svg style={containerStyle}>
-          <text x="40" y="50" fill="#bd4139" fontFamily="'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="50" fontWeight="bold">NOPE</text>
-          <text x="40" y="100" fill="#bd4139" fontFamily="'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="50" fontWeight="bold">NOPE</text>
-          <text x="40" y="150" fill="#bd4139" fontFamily="'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="50" fontWeight="bold">NOPE</text>
-          <text x="40" y="200" fill="#bd4139" fontFamily="'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="50" fontWeight="bold">NOPE</text>
+          <text x="45" y="50" fill="#bd4139" fontFamily="'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="50" fontWeight="bold">NOPE</text>
+          <text x="45" y="100" fill="#bd4139" fontFamily="'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="50" fontWeight="bold">NOPE</text>
+          <text x="45" y="150" fill="#bd4139" fontFamily="'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="50" fontWeight="bold">NOPE</text>
+          <text x="45" y="200" fill="#bd4139" fontFamily="'Karla', 'Helvetica Neue', Helvetica, Arial, sans-serif" fontSize="50" fontWeight="bold">NOPE</text>
         </svg>
       </div>
     );
