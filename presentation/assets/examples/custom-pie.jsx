@@ -1,6 +1,6 @@
 <VictoryPie
-  width={700}
-  height={700}
+  width={500}
+  height={500}
   data={[
     {x: "dogs", y: 4279},
     {x: "cats", y: 9182},
@@ -12,7 +12,7 @@
   ]}
   style={{
     labels: {
-      fontSize: 40,
+      fontSize: 30,
       fill: "white"
     }
   }}

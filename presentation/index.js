@@ -1136,16 +1136,16 @@ export default class Presentation extends React.Component {
             <Text fit textFont="secondary" textColor="secondary">
               Coming Soon
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 100}}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55, paddingTop: 70}}>
               Data accessor functions
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55, paddingTop: 40}}>
               General interactivity support
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55, paddingTop: 40}}>
               Support for React Native
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55, paddingTop: 40}}>
               More components!
             </Text>
           </Slide>
@@ -1156,14 +1156,14 @@ export default class Presentation extends React.Component {
             <Text fit textFont="secondary" textColor="secondary">
               Stay tuned!
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 100}}>
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55, paddingTop: 70}}>
               victory.formidable.com
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
-              blog.formidable.com
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55, paddingTop: 40}}>
+              {"https://gitter.im/FormidableLabs/victory"}
             </Text>
-            <Text textFont="secondary" textColor="secondary" style={{fontSize: 65, paddingTop: 40}}>
-              office hours
+            <Text textFont="secondary" textColor="secondary" style={{fontSize: 55, paddingTop: 40}}>
+              office hours: Jan 27th at Formidable
             </Text>
           </Slide>
 

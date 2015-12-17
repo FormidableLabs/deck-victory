@@ -1,7 +1,7 @@
 <VictoryPie
-  width={700}
-  height={700}
-  innerRadius={200}
+  width={500}
+  height={500}
+  innerRadius={140}
   startAngle={-90}
   endAngle={90}
   padAngle={2}

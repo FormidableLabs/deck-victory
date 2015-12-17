@@ -1,4 +1,4 @@
-<VictoryAxis width={900} height={700}
+<VictoryAxis width={600} height={500}
   style={{
     axis: {stroke: "black"},
       grid: {
